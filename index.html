@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>J Macedo Eletrônica — Assistência técnica autorizada Samsung</title>
+<meta name="description" content="Assistência técnica autorizada Samsung e multimarcas em São Paulo desde 1977. Encontre a unidade J Macedo mais próxima de você." />
+
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-soft:#F5F8FC; --navy:#0B2545; --navy-2:#123B73;
+    --accent:#2F6FED; --accent-soft:#E8EFFE; --muted:#5B6B7C; --border:#E3E9F1;
+    --whatsapp:#25D366;
+    --font-head: "Sora", system-ui, sans-serif; --font-body: "Public Sans", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{margin:0; background:var(--bg); color:var(--navy); font-family:var(--font-body); line-height:1.6;}
+  h1,h2,h3{font-family:var(--font-head); font-weight:700; letter-spacing:-0.01em; margin:0; color:var(--navy);}
+  p{margin:0;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{color:var(--navy-2);}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .container{max-width:1120px; margin:0 auto; padding:0 24px;}
+  .pill{display:inline-flex; align-items:center; gap:8px; background:var(--accent-soft); color:var(--navy-2); font-size:0.78rem; font-weight:600; padding:7px 14px; border-radius:100px;}
+  .pill.on-dark{background:rgba(255,255,255,0.14); color:#fff;}
+  .btn{display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-size:0.92rem; font-weight:600; padding:14px 24px; border-radius:100px; border:1px solid transparent; white-space:nowrap;}
+  .btn-primary{background:var(--accent); color:#fff;}
+  .btn-primary:hover{background:var(--navy-2); color:#fff;}
+  .btn-outline{background:transparent; color:var(--navy); border-color:var(--border);}
+  .btn-outline.on-dark{color:#fff; border-color:rgba(255,255,255,0.35);}
+  .btn-sm{padding:10px 16px; font-size:0.82rem;}
+  .icon{width:1.3em; height:1.3em; stroke:currentColor; fill:none; stroke-width:1.8; flex-shrink:0;}
+  .eyebrow{font-size:0.78rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent);}
+
+  /* header */
+  header{border-bottom:1px solid var(--border); position:sticky; top:0; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); z-index:40;}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; height:80px; gap:24px;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .logo-mark{width:40px; height:40px; border-radius:12px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-weight:700; font-size:0.95rem; flex-shrink:0;}
+  .brand-text strong{font-family:var(--font-head); font-size:1rem; color:var(--navy);}
+  .brand-text span{font-size:0.72rem; color:var(--muted); display:block;}
+  nav.primary-nav{display:flex; align-items:center; gap:24px;}
+  nav.primary-nav a{font-size:0.9rem; color:var(--muted); font-weight:500;}
+  nav.primary-nav a:hover{color:var(--navy);}
+  .menu-toggle{display:none; background:none; border:1px solid var(--border); border-radius:10px; width:42px; height:42px; align-items:center; justify-content:center; color:var(--navy); flex-shrink:0;}
+  @media (max-width:980px){
+    /* backdrop-filter num ancestral cria um novo containing block para descendentes fixed — desativa aqui pra não espremer o menu mobile */
+    header{backdrop-filter:none; background:#fff;}
+    nav.primary-nav{position:fixed; inset:80px 0 0 0; background:#fff; flex-direction:column; align-items:flex-start; padding:24px; gap:4px; transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease; overflow-y:auto;}
+    nav.primary-nav a{width:100%; padding:14px 4px; font-size:1.05rem; border-bottom:1px solid var(--border);}
+    nav.primary-nav.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .menu-toggle{display:flex;}
+    .nav-actions{display:none;}
+  }
+
+  /* hero (real video background) */
+  .hero{position:relative; overflow:hidden; padding:120px 0 72px; color:#fff; background:linear-gradient(200deg, #0B2545 0%, #0A1E3B 45%, #081831 100%);}
+  .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  .hero-overlay{position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(8,20,40,0.35) 0%, rgba(8,20,40,0.62) 70%, rgba(8,20,40,0.88) 100%);}
+  .hero-inner{position:relative; z-index:2;}
+  .hero h1{color:#fff; font-size:clamp(2.1rem, 4.4vw, 3rem); line-height:1.08; margin:20px 0 18px; max-width:17ch;}
+  .hero h1 span{color:#7FB0FF;}
+  .hero .lede{font-size:1.08rem; color:rgba(255,255,255,0.85); max-width:52ch; margin-bottom:32px;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px;}
+  .hero-stats{margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:760px;}
+  @media (max-width:640px){.hero-stats{grid-template-columns:repeat(2,1fr);}}
+  .hero-stat{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:16px; padding:16px 18px; backdrop-filter:blur(6px);}
+  .hero-stat .num{font-family:var(--font-head); font-size:1.3rem; font-weight:700; color:#fff;}
+  .hero-stat .lbl{font-size:0.7rem; color:rgba(255,255,255,0.7); margin-top:2px;}
+
+  section{padding:72px 0;}
+  .section-head{max-width:640px; margin-bottom:36px;}
+  .section-head h2{font-size:clamp(1.5rem,2.6vw,1.9rem); margin:8px 0 10px;}
+  .section-head p{color:var(--muted); font-size:1.02rem;}
+
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:900px){.grid-3{grid-template-columns:1fr;}}
+  .card{background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px; box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
+  .icon-wrap{width:44px; height:44px; border-radius:14px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .card h3{font-size:1.05rem; margin-bottom:8px;}
+  .card p{color:var(--muted); font-size:0.9rem; margin-bottom:14px;}
+  .lnk{font-size:0.86rem; font-weight:600; background:none; border:none; padding:0; color:var(--accent); cursor:pointer; font-family:inherit;}
+
+  /* services — carrossel com transição (troca por clique, não por scroll) */
+  .services-frame{background:var(--navy); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; min-height:min(640px, 76vh); width:100%;}
+  @media (max-width:860px){
+    .services-frame{grid-template-columns:1fr; min-height:auto;}
+  }
+  .services-slide-panel{padding:48px; display:flex; flex-direction:column; justify-content:center;}
+  .services-slide-panel .eyebrow{color:#7FB0FF;}
+  .services-slide-panel h2{color:#fff; font-size:1.8rem; margin:10px 0 8px;}
+  .services-slide-panel .sub{color:rgba(255,255,255,0.6); font-size:0.95rem; margin-bottom:28px;}
+  .slide-card{background:var(--accent); border-radius:20px; padding:32px; position:relative;}
+  .slide-card .counter{position:absolute; top:28px; right:28px; font-family:var(--font-head); font-size:1.5rem; font-weight:700; color:#fff;}
+  .slide-card .counter span{font-size:0.9rem; color:rgba(255,255,255,0.6); font-weight:500;}
+  .slide-card .time{display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,0.85); font-size:0.85rem; margin-bottom:18px;}
+  .slide-card .time .icon{width:16px; height:16px;}
+  .slide-card h3{color:#fff; font-size:1.3rem; margin-bottom:10px;}
+  .slide-card p{color:rgba(255,255,255,0.85); font-size:0.92rem; margin-bottom:18px;}
+  .slide-tags{display:grid; grid-template-columns:1fr 1fr; gap:10px 20px;}
+  .slide-tags span{display:flex; align-items:center; gap:8px; color:#fff; font-size:0.85rem;}
+  .slide-tags .icon{width:16px; height:16px; flex-shrink:0;}
+  .carousel-controls{display:flex; align-items:center; gap:14px; margin-top:28px;}
+  .carousel-arrow{width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .15s ease;}
+  .carousel-arrow:hover{background:rgba(255,255,255,0.22);}
+  .carousel-arrow .icon{width:16px; height:16px;}
+  .slide-dots{display:flex; gap:8px;}
+  .slide-dots button{width:24px; height:4px; border-radius:2px; background:rgba(255,255,255,0.25); border:none; padding:0; transition:background .2s ease;}
+  .slide-dots button.active{background:#7FB0FF;}
+  .services-photo{position:relative; overflow:hidden;}
+  .services-video-slide{display:none; width:100%; height:100%; opacity:0; transition:opacity .3s ease;}
+  .services-video-slide.active{display:block;}
+  .services-video-slide.active.show{opacity:1;}
+  .services-video{width:100%; height:100%; object-fit:cover; display:block;}
+  .services-video-overlay{position:absolute; inset:0; background:linear-gradient(200deg, rgba(11,37,69,0.15), rgba(8,20,40,0.55));}
+  .services-cta{position:absolute; z-index:2; bottom:28px; right:28px; box-shadow:0 12px 28px -10px rgba(11,37,69,0.45);}
+  .services-cta .icon{width:18px; height:18px;}
+  .service-slide{display:none; opacity:0; transform:translateY(6px); transition:opacity .3s ease, transform .3s ease;}
+  .service-slide.active{display:block;}
+  .service-slide.active.show{opacity:1; transform:translateY(0);}
+
+  section.products{background:var(--bg-soft);}
+  .product-photo{aspect-ratio:1; border-radius:14px; background:#0E1A2E; margin-bottom:18px; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.35);}
+  .product-photo .icon{width:40px; height:40px;}
+
+  /* unidades finder */
+  .finder-controls{border:1px solid var(--border); background:#fff; border-radius:20px; padding:20px; margin-bottom:24px;}
+  .search-row{display:flex; align-items:center; gap:10px; border:1px solid var(--border); border-radius:100px; padding:12px 18px; margin-bottom:16px;}
+  .search-row .icon{color:var(--muted);}
+  .search-row input{border:none; outline:none; font-size:0.95rem; color:var(--navy); width:100%; font-family:var(--font-body); background:transparent;}
+  .filter-groups{display:flex; flex-wrap:wrap; gap:22px;}
+  .filter-group{display:flex; flex-direction:column; gap:8px;}
+  .filter-label{font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{font-size:0.82rem; padding:7px 14px; border-radius:100px; border:1px solid var(--border); background:#fff; color:var(--muted);}
+  .chip[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#fff; font-weight:600;}
+  .result-meta{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; font-size:0.85rem; color:var(--muted);}
+  #result-count strong{color:var(--navy);}
+  #result-clear{cursor:pointer; text-decoration:underline;}
+  .units-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:980px){.units-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:660px){.units-grid{grid-template-columns:1fr;}}
+  .unit-card{background:#fff; border:1px solid var(--border); border-radius:20px; overflow:hidden; display:flex; flex-direction:column;}
+  .unit-photo{height:110px; background:linear-gradient(135deg, var(--navy), var(--accent)); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.85);}
+  .unit-body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .unit-badge{display:inline-flex; align-self:flex-start; font-size:0.66rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:var(--accent-soft); color:var(--navy-2);}
+  .unit-badge.multi{background:#F3E3D3; color:#95491A;}
+  .unit-body h3{font-size:1rem;}
+  .u-line{display:flex; gap:8px; align-items:flex-start; font-size:0.84rem; color:var(--muted);}
+  .u-line .icon{width:15px; height:15px; margin-top:2px; color:var(--accent); flex-shrink:0;}
+  .unit-actions{display:flex; gap:8px; padding:0 20px 20px;}
+  .unit-actions .btn{padding:10px 14px; font-size:0.8rem; flex:1; justify-content:center;}
+  .empty-state{display:none; text-align:center; padding:56px 20px; color:var(--muted); border:1px dashed var(--border); border-radius:16px;}
+  .empty-state.show{display:block;}
+
+  /* os consult band */
+  .os-band{background:linear-gradient(120deg, var(--navy), var(--navy-2)); color:#fff; border-radius:28px; padding:48px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;}
+  @media (max-width:860px){.os-band{grid-template-columns:1fr; padding:32px;}}
+  .os-band h2{color:#fff; font-size:1.7rem;}
+  .os-band p{color:rgba(255,255,255,0.8); margin-top:12px; font-size:0.98rem;}
+  .os-steps{display:flex; flex-direction:column; gap:0;}
+  .os-step{display:flex; gap:14px; padding:14px 0; border-top:1px solid rgba(255,255,255,0.14);}
+  .os-step:last-child{border-bottom:1px solid rgba(255,255,255,0.14);}
+  .os-step .n{font-family:var(--font-head); font-weight:700; color:#7FB0FF;}
+  .os-step p{margin:0; color:#fff; font-size:0.92rem;}
+  .os-form{margin-top:24px; display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end;}
+  .os-field{display:flex; flex-direction:column; gap:6px;}
+  .os-field label{font-size:0.78rem; color:rgba(255,255,255,0.7); font-weight:600;}
+  .os-field input{border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.08); color:#fff; border-radius:12px; padding:12px 16px; font-family:inherit; font-size:0.92rem; min-width:180px;}
+  .os-field input::placeholder{color:rgba(255,255,255,0.4);}
+  .os-field input:focus{outline:none; border-color:#7FB0FF;}
+
+  .os-result{margin-top:24px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px; color:var(--navy);}
+  .os-result-loading, .os-result-error{font-size:0.94rem; color:var(--muted);}
+  .os-result-error{color:#B42318;}
+  .os-result-error .lnk{margin-left:6px;}
+  .os-status-badge{display:inline-flex; padding:6px 14px; border-radius:100px; background:var(--accent-soft); color:var(--navy-2); font-weight:700; font-size:0.85rem; margin-bottom:14px;}
+  .os-result h3{font-size:1.1rem; margin-bottom:4px;}
+  .os-result-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:14px 24px; margin:16px 0;}
+  .os-result-field strong{display:block; color:var(--muted); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:2px;}
+  .os-result-field span{font-size:0.92rem;}
+  .os-parts{margin-top:18px; border-top:1px solid var(--border); padding-top:16px;}
+  .os-parts h4{font-size:0.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px;}
+  .os-parts ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .os-parts li{font-size:0.9rem; display:flex; justify-content:space-between; gap:12px;}
+  .os-parts li span:last-child{color:var(--muted);}
+  .os-match-list{display:flex; flex-direction:column; gap:10px; margin-top:12px;}
+  .os-match-item{border:1px solid var(--border); border-radius:14px; padding:14px 16px; background:none; text-align:left; font-family:inherit; cursor:pointer; width:100%;}
+  .os-match-item:hover{border-color:var(--accent);}
+  .os-match-item strong{display:block; font-size:0.92rem;}
+  .os-match-item span{font-size:0.82rem; color:var(--muted);}
+
+  /* sobre */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p.body{color:var(--muted); margin-bottom:14px; font-size:0.98rem;}
+  .about-photos{position:relative; padding-bottom:44px; padding-left:32px;}
+  @media (max-width:860px){.about-photos{margin-top:20px;}}
+  .photo-main{border-radius:24px; background:linear-gradient(150deg, var(--navy), var(--navy-2)); aspect-ratio:4/5; width:100%; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.3);}
+  .photo-main .icon{width:56px; height:56px;}
+  .photo-overlap{position:absolute; left:-32px; bottom:0; width:60%; aspect-ratio:4/3; border-radius:20px; background:linear-gradient(150deg, var(--accent), var(--navy-2)); border:6px solid #fff; box-shadow:0 20px 40px -20px rgba(11,37,69,0.35); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.35);}
+  .photo-overlap .icon{width:36px; height:36px;}
+  .diff-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; padding-top:32px; border-top:1px solid var(--border);}
+  @media (max-width:860px){.diff-strip{grid-template-columns:1fr 1fr;}}
+  .diff-item{display:flex; gap:12px;}
+  .diff-item .icon{width:20px; height:20px; color:var(--accent); margin-top:2px; flex-shrink:0;}
+  .diff-item h4{font-size:0.9rem; margin-bottom:4px; font-family:var(--font-head);}
+  .diff-item p{color:var(--muted); font-size:0.83rem;}
+
+  /* nosso trabalho — horizontal scroll gallery */
+  section.work-gallery{background:var(--bg-soft);}
+  .work-scroll{display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x proximity; padding-bottom:8px; margin:0 -24px; padding-left:24px; padding-right:24px;}
+  .work-tile{border-radius:16px; flex:0 0 auto; width:280px; height:200px; background:linear-gradient(140deg, var(--accent-soft), var(--border)); display:flex; align-items:center; justify-content:center; color:var(--accent); scroll-snap-align:start;}
+  .work-tile .icon{width:28px; height:28px;}
+
+  /* instagram */
+  section.insta{background:#fff;}
+  .insta-head{display:flex; align-items:center; justify-content:space-between; gap:24px; max-width:none; flex-wrap:wrap;}
+  .insta-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:24px;}
+  @media (max-width:860px){.insta-grid{grid-template-columns:repeat(3,1fr);}}
+  .insta-tile{aspect-ratio:1; border-radius:14px; background:linear-gradient(135deg, var(--accent-soft), var(--border)); display:flex; align-items:center; justify-content:center; color:var(--accent);}
+
+  /* trabalhe conosco */
+  .work-band{background:#fff; border:1px solid var(--border); border-radius:24px; padding:40px 48px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  .work-band h3{font-size:1.3rem; margin-bottom:6px;}
+  .work-band p{color:var(--muted);}
+
+  /* footer */
+  footer{background:var(--navy); color:rgba(255,255,255,0.75); padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  @media (max-width:780px){.footer-grid{grid-template-columns:1fr; gap:32px;}}
+  .footer-grid h4{font-family:var(--font-head); font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;}
+  .footer-grid p, .footer-grid a, .footer-grid button{font-size:0.9rem; color:rgba(255,255,255,0.78); text-decoration:none; display:block; margin-bottom:10px;}
+  .footer-grid a:hover, .footer-grid button:hover{color:#fff;}
+  .footer-wa-btn{background:none; border:none; padding:0; text-align:left; cursor:pointer; font-family:inherit; width:100%;}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.14); font-size:0.8rem; color:rgba(255,255,255,0.55);}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{width:36px; height:36px; border:1px solid rgba(255,255,255,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0; color:#fff;}
+
+  .chat-float{position:fixed; bottom:24px; right:24px; z-index:50; width:58px; height:58px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px -10px rgba(11,37,69,0.45); transition:transform .15s ease; border:none;}
+  .chat-float:hover{transform:scale(1.06);}
+
+  /* modal de escolha de unidade */
+  .wa-modal-backdrop{position:fixed; inset:0; z-index:60; background:rgba(11,37,69,0.55); display:flex; align-items:center; justify-content:center; padding:24px;}
+  .wa-modal-backdrop[hidden]{display:none;}
+  .wa-modal{background:#fff; border-radius:24px; max-width:440px; width:100%; max-height:80vh; display:flex; flex-direction:column; padding:28px; box-shadow:0 30px 60px -20px rgba(11,37,69,0.4);}
+  .wa-modal-head{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+  .wa-modal-head h3{font-size:1.2rem;}
+  .wa-modal-close{background:var(--bg-soft); border:none; width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); flex-shrink:0;}
+  .wa-modal-close .icon{width:16px; height:16px;}
+  .wa-modal-sub{color:var(--muted); font-size:0.9rem; margin-top:8px;}
+  .wa-modal-list{margin-top:18px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;}
+  .wa-modal-item{display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left; background:var(--bg-soft); border:1px solid var(--border); border-radius:14px; padding:14px 16px; font-family:inherit; font-size:0.92rem; font-weight:600; color:var(--navy);}
+  .wa-modal-item:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .wa-modal-item .icon{width:18px; height:18px; color:var(--whatsapp); flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-row">
+    <a class="brand" href="#topo">
+      <div class="logo-mark">JM</div>
+      <div class="brand-text"><strong>J. Macedo Eletrônica</strong><span>Assistência técnica autorizada Samsung</span></div>
+    </a>
+    <nav class="primary-nav" id="primary-nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#produtos">Peças e produtos</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#consultar-os">Consultar OS</a>
+      <a href="#trabalhe">Trabalhe conosco</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <button class="btn btn-primary btn-sm nav-actions" type="button" data-wa-picker><span class="btn-label">Falar no WhatsApp</span></button>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menu">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO — vídeo de fundo real -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline id="hero-video">
+      <source src="assets/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <span class="pill on-dark">Autorizada Samsung · Multimarcas · Seguradoras</span>
+      <h1>A gente vai <span>até você.</span></h1>
+      <p class="lede">49 anos consertando celulares, TVs e eletrodomésticos de diversas marcas em São Paulo — atendimento em loja, shopping ou na sua casa.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" type="button" data-wa-picker>Falar no WhatsApp</button>
+        <a class="btn btn-outline on-dark" href="#consultar-os">Consultar minha OS</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">1977</div><div class="lbl">Fundação</div></div>
+        <div class="hero-stat"><div class="num">12</div><div class="lbl">Unidades em SP</div></div>
+        <div class="hero-stat"><div class="num">Samsung</div><div class="lbl">Autorizada oficial</div></div>
+        <div class="hero-stat"><div class="num">Seguradoras</div><div class="lbl">Atende sinistros</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS — carrossel (setas + bolinhas), cada slide com seu próprio vídeo -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">O que fazemos</span>
+        <h2>Cuidamos do que você mais usa</h2>
+        <p>Reparo, higienização e peças — as três frentes, uma de cada vez.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="services-frame">
+        <div class="services-slide-panel">
+
+          <div class="service-slide active show" data-slide="0">
+            <span class="eyebrow">Serviço 1 de 3</span>
+            <h2>Reparos</h2>
+            <p class="sub">Multimarcas ou autorizado Samsung.</p>
+          </div>
+          <div class="service-slide" data-slide="1">
+            <span class="eyebrow">Serviço 2 de 3</span>
+            <h2>Higienização</h2>
+            <p class="sub">Ar-condicionado, lava e seca e refrigeradores.</p>
+          </div>
+          <div class="service-slide" data-slide="2">
+            <span class="eyebrow">Serviço 3 de 3</span>
+            <h2>Peças &amp; produtos</h2>
+            <p class="sub">Garantia J Macedo e peças originais Samsung.</p>
+          </div>
+
+          <div class="slide-card">
+            <div class="counter" id="slide-counter">1<span>/3</span></div>
+
+            <div class="service-slide active show" data-slide="0">
+              <div class="time"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Prazo médio: 1 a 5 dias</div>
+              <h3>Reparos</h3>
+              <p>Diagnóstico técnico real, não só troca de peça — na loja, no shopping ou na sua casa.</p>
+              <div class="slide-tags">
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Celulares e tablets</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>TVs</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ar-condicionado</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Refrigeradores</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Máquinas de lavar</span>
+              </div>
+            </div>
+            <div class="service-slide" data-slide="1">
+              <div class="time"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Planos periódicos disponíveis</div>
+              <h3>Higienização</h3>
+              <p>Limpeza técnica de ar-condicionado, lava e seca e refrigeradores.</p>
+              <div class="slide-tags">
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ar-condicionado</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Lava e seca</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Refrigeradores</span>
+              </div>
+            </div>
+            <div class="service-slide" data-slide="2">
+              <div class="time"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Garantia J Macedo inclusa</div>
+              <h3>Peças &amp; produtos</h3>
+              <p>Produtos reparados com garantia J Macedo e peças originais Samsung.</p>
+              <div class="slide-tags">
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Garantia J Macedo</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Peças originais</span>
+                <span><svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Store+</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Serviço anterior">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="slide-dots">
+              <button class="active" data-dot="0" aria-label="Ver Reparos"></button>
+              <button data-dot="1" aria-label="Ver Higienização"></button>
+              <button data-dot="2" aria-label="Ver Peças e produtos"></button>
+            </div>
+            <button class="carousel-arrow" type="button" data-dir="1" aria-label="Próximo serviço">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="services-photo" id="services-photo">
+          <div class="services-video-slide active show" data-slide="0">
+            <video class="services-video" autoplay muted loop playsinline><source src="assets/hero-video.mp4" type="video/mp4"></video>
+          </div>
+          <div class="services-video-slide" data-slide="1">
+            <video class="services-video" autoplay muted loop playsinline><source src="assets/hero-video.mp4" type="video/mp4"></video>
+          </div>
+          <div class="services-video-slide" data-slide="2">
+            <video class="services-video" autoplay muted loop playsinline><source src="assets/hero-video.mp4" type="video/mp4"></video>
+          </div>
+          <div class="services-video-overlay"></div>
+          <button class="btn btn-primary services-cta" type="button" data-wa-picker>
+            <svg class="icon" viewBox="0 0 24 24" style="stroke-linecap:round; stroke-linejoin:round;">
+              <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H9.5L5 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/>
+              <circle cx="8" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Abrir chamado
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEÇAS E PRODUTOS -->
+  <section id="produtos" class="products">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Loja &amp; peças</span>
+        <h2>Peças e produtos</h2>
+        <p>Para quem quer comprar já reparado e para quem também presta assistência técnica.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
+          <h3>Produtos reparados J Macedo</h3>
+          <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
+          <button class="lnk" type="button" data-wa-picker>Ver ofertas →</button>
+        </div>
+        <div class="card">
+          <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+          <h3>Peças de reposição</h3>
+          <p>Peças originais Samsung direto do fabricante, para assistências técnicas e profissionais.</p>
+          <button class="lnk" type="button" data-wa-picker>Falar com consultor →</button>
+        </div>
+        <div class="card">
+          <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2l1.5 4.5H12l-3.5 3L10 14 6 11l-4 3 1.5-4.5L0 6.5h4.5z"/></svg></div>
+          <h3>Store+</h3>
+          <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
+          <button class="lnk" type="button" data-wa-picker>Falar com consultor →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIDADES — buscador real, 12 unidades -->
+  <section id="unidades">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">12 unidades em São Paulo</span>
+        <h2>Encontre a unidade certa</h2>
+        <p>Capital, litoral e interior — em loja própria, dentro de shopping ou atendimento em domicílio.</p>
+      </div>
+
+      <div class="finder-controls">
+        <div class="search-row">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="unit-search" placeholder="Busque por cidade, shopping ou bairro (ex: Ribeirão, Morumbi, Taboão)" aria-label="Buscar unidade" />
+        </div>
+        <div class="filter-groups">
+          <div class="filter-group">
+            <span class="filter-label">Região</span>
+            <div class="chip-row" id="filter-region" role="group" aria-label="Filtrar por região">
+              <button class="chip" aria-pressed="true" data-value="all">Todas</button>
+              <button class="chip" aria-pressed="false" data-value="capital">Capital</button>
+              <button class="chip" aria-pressed="false" data-value="grande-sp">Grande SP</button>
+              <button class="chip" aria-pressed="false" data-value="litoral">Litoral</button>
+              <button class="chip" aria-pressed="false" data-value="interior">Interior</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Equipamento</span>
+            <div class="chip-row" id="filter-category" role="group" aria-label="Filtrar por equipamento">
+              <button class="chip" aria-pressed="true" data-value="all">Todos</button>
+              <button class="chip" aria-pressed="false" data-value="celular">Celular &amp; tablet</button>
+              <button class="chip" aria-pressed="false" data-value="linha-branca">TV &amp; linha branca</button>
+              <button class="chip" aria-pressed="false" data-value="ar">Ar-condicionado</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-meta">
+        <span id="result-count"><strong>12</strong> unidades encontradas</span>
+        <span id="result-clear" style="display:none;">Limpar filtros</span>
+      </div>
+
+      <div class="units-grid" id="units-grid"></div>
+      <div class="empty-state" id="empty-state">Nenhuma unidade encontrada com esses filtros. Ligue para a Central: <a href="tel:+551156660466">(11) 5666-0466</a>.</div>
+    </div>
+  </section>
+
+  <!-- CONSULTAR OS -->
+  <section id="consultar-os">
+    <div class="container">
+      <div class="os-band">
+        <div>
+          <span class="eyebrow" style="color:#7FB0FF;">Já tem um reparo em andamento?</span>
+          <h2>Consulte sua Ordem de Serviço</h2>
+          <p>Informe o telefone usado no atendimento e o número da sua OS pra ver o status na hora.</p>
+          <form class="os-form" id="os-form">
+            <div class="os-field">
+              <label for="os-phone">Telefone</label>
+              <input type="tel" id="os-phone" placeholder="(11) 90000-0000" required>
+            </div>
+            <div class="os-field">
+              <label for="os-number">Número da OS</label>
+              <input type="text" id="os-number" placeholder="Ex: 12345" required>
+            </div>
+            <button class="btn btn-primary" type="submit" id="os-submit">Consultar</button>
+          </form>
+        </div>
+        <div class="os-steps">
+          <div class="os-step"><span class="n">1</span><p>Preencha telefone e número da OS</p></div>
+          <div class="os-step"><span class="n">2</span><p>A gente consulta na hora</p></div>
+          <div class="os-step"><span class="n">3</span><p>Veja o status e as peças do seu reparo</p></div>
+        </div>
+      </div>
+      <div class="os-result" id="os-result" hidden></div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <span class="eyebrow">Desde 1977</span>
+          <h2 style="margin:10px 0 18px; font-size:1.9rem;">Uma história que virou referência</h2>
+          <p class="body">Fundada por Jonas Macedo em 1977, a J Macedo nasceu pequena e familiar — e assim segue, mesmo hoje como referência entre as marcas que representa.</p>
+          <p class="body">Atendemos diversas marcas de eletrônicos e eletrodomésticos, com parcerias firmadas junto a seguradoras — em loja própria, como autorizada Samsung in-home e em Mobile Centers dentro de shoppings — balcão, visita técnica ou domicílio, o que for mais prático para você.</p>
+        </div>
+        <div class="about-photos">
+          <div class="photo-main"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+          <div class="photo-overlap"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3l-7 9h6l-1 9 7-9h-6z"/></svg></div>
+        </div>
+      </div>
+      <div class="diff-strip">
+        <div class="diff-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          <div><h4>Autorizada oficial Samsung</h4><p>Seu aparelho não perde a garantia de fábrica.</p></div>
+        </div>
+        <div class="diff-item">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16"/></svg>
+          <div><h4>Diversas marcas atendidas</h4><p>Celulares, TVs, geladeiras, lavadoras e mais.</p></div>
+        </div>
+        <div class="diff-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 3l-7 9h6l-1 9 7-9h-6z"/></svg>
+          <div><h4>Parceria com seguradoras</h4><p>Atendimento também via acionamento de seguro.</p></div>
+        </div>
+        <div class="diff-item">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2-10 10z"/></svg>
+          <div><h4>Balcão, shopping ou em casa</h4><p>Você escolhe o formato mais prático.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSSO TRABALHO — galeria com scroll horizontal real -->
+  <section class="work-gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Reparos &amp; bastidores</span>
+        <h2>Nosso trabalho</h2>
+        <p>Fotos reais das nossas unidades, técnicos e reparos entrarão aqui.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="work-scroll">
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3l-7 9h6l-1 9 7-9h-6z"/></svg></div>
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v4M12 18v4M4 12H2M22 12h-2"/></svg></div>
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg></div>
+        <div class="work-tile"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3l-7 9h6l-1 9 7-9h-6z"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="insta">
+    <div class="container">
+      <div class="section-head insta-head">
+        <div>
+          <span class="eyebrow">@jmacedosamsung</span>
+          <h2 style="margin-top:8px;">Segue lá no Instagram</h2>
+        </div>
+        <a class="btn btn-outline" href="https://www.instagram.com/jmacedosamsung/" target="_blank" rel="noopener">Seguir</a>
+      </div>
+      <div class="insta-grid">
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABALHE CONOSCO -->
+  <section id="trabalhe" style="padding-top:0;">
+    <div class="container">
+      <div class="work-band">
+        <div>
+          <h3>Quer fazer parte da equipe?</h3>
+          <p>Estamos sempre em busca de técnicos e atendentes para nossas unidades em São Paulo.</p>
+        </div>
+        <button class="btn btn-primary" type="button" data-wa-picker>Enviar currículo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>J Macedo Eletrônica</h4>
+          <p>Av. Professor Papini, 343 — Cidade Dutra, São Paulo — SP, CEP 04805-300</p>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/company/j-macedo-eletr%C3%B4nica/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg></a>
+            <a href="https://www.instagram.com/jmacedosamsung/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px;"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Central de atendimento</h4>
+          <a href="tel:+551156660466">(11) 5666-0466</a>
+          <a href="tel:+551156679695">(11) 5667-9695</a>
+          <button type="button" class="footer-wa-btn" data-wa-picker>WhatsApp (11) 99748-0887</button>
+          <a href="mailto:sac@jmacedoeletronica.com.br">sac@jmacedoeletronica.com.br</a>
+        </div>
+        <div>
+          <h4>Institucional</h4>
+          <a href="#servicos">Serviços</a>
+          <a href="#unidades">Unidades</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#trabalhe">Trabalhe conosco</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 J Macedo Eletrônica — Assistência técnica desde 1977.</span>
+        <span>São Paulo · SP</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="chat-float" type="button" data-wa-picker aria-label="Falar com a gente">
+    <svg viewBox="0 0 24 24" style="width:26px;height:26px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;">
+      <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H9.5L5 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/>
+      <circle cx="8" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="16" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+    </svg>
+  </button>
+
+  <!-- modal: escolher unidade antes de abrir o WhatsApp -->
+  <div class="wa-modal-backdrop" id="wa-modal-backdrop" hidden>
+    <div class="wa-modal" role="dialog" aria-modal="true" aria-labelledby="wa-modal-title">
+      <div class="wa-modal-head">
+        <h3 id="wa-modal-title">Falar com qual unidade?</h3>
+        <button type="button" class="wa-modal-close" id="wa-modal-close" aria-label="Fechar">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <p class="wa-modal-sub">Escolha a unidade para falar direto no WhatsApp de quem te atende.</p>
+      <div class="wa-modal-list" id="wa-modal-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  /* mobile menu */
+  var toggle = document.getElementById("menu-toggle");
+  var nav = document.getElementById("primary-nav");
+  toggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ nav.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); });
+  });
+
+  /* ---------- modal "falar com qual unidade" ---------- */
+  var WA_CONTACTS = [
+    { name:"Matriz", wa:"5511997480887" },
+    { name:"JM3", wa:"5511924484338" },
+    { name:"CSP São Miguel", wa:"5511930598313" },
+    { name:"CSP São Miguel - Balcão", wa:"5511922216153" },
+    { name:"Maxi Jundiaí", wa:"5511972277366" },
+    { name:"Parque Dom Pedro", wa:"5519998713109" },
+    { name:"Campinas", wa:"551920384948" },
+    { name:"Taboão da Serra", wa:"5511930398440" },
+    { name:"Santos", wa:"5513997235278" },
+    { name:"Ribeirão Shopping", wa:"5516997934104" },
+    { name:"Ribeirão Smart Center", wa:"551639111154" },
+    { name:"Ribeirão - IH", wa:"5516996117989" },
+    { name:"Rio Preto", wa:"5517996559753" }
+  ];
+  var waBackdrop = document.getElementById("wa-modal-backdrop");
+  var waList = document.getElementById("wa-modal-list");
+  var waClose = document.getElementById("wa-modal-close");
+  var waLastFocused = null;
+  var waPendingMessage = null;
+
+  waList.innerHTML = WA_CONTACTS.map(function(c, i){
+    return '<button type="button" class="wa-modal-item" data-wa="' + c.wa + '">' + c.name +
+      '<svg class="icon" viewBox="0 0 24 24" style="fill:currentColor; stroke:none;"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 20.2 12 8.2 8.2 0 0 1 12 20.2z"/></svg></button>';
+  }).join("");
+
+  function openWaModal(){
+    waLastFocused = document.activeElement;
+    waBackdrop.hidden = false;
+    waClose.focus();
+  }
+  function closeWaModal(){
+    waBackdrop.hidden = true;
+    if (waLastFocused) waLastFocused.focus();
+  }
+  document.querySelectorAll("[data-wa-picker]").forEach(function(btn){
+    btn.addEventListener("click", openWaModal);
+  });
+  waClose.addEventListener("click", closeWaModal);
+  waBackdrop.addEventListener("click", function(e){ if (e.target === waBackdrop) closeWaModal(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !waBackdrop.hidden) closeWaModal(); });
+  waList.addEventListener("click", function(e){
+    var item = e.target.closest("[data-wa]");
+    if (!item) return;
+    var text = waPendingMessage || "Olá, vim pelo site e preciso de ajuda com um reparo";
+    var msg = encodeURIComponent(text);
+    window.open("https://wa.me/" + item.getAttribute("data-wa") + "?text=" + msg, "_blank", "noopener");
+    waPendingMessage = null;
+    closeWaModal();
+  });
+
+  /* ---------- consulta real de OS (status_api) ---------- */
+  /* Preencher com a URL do serviço depois do deploy, ex: "https://jmacedo-status-api.onrender.com".
+     Enquanto estiver vazio, o formulário cai automaticamente no fluxo antigo (WhatsApp). */
+  var OS_API_BASE = "https://jmacedo-status-api.onrender.com";
+
+  var osForm = document.getElementById("os-form");
+  var osResult = document.getElementById("os-result");
+  var osSubmitBtn = document.getElementById("os-submit");
+
+  function escapeHtml(str){
+    return String(str == null ? "" : str).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  function renderOsLoading(){
+    osResult.hidden = false;
+    osResult.innerHTML = '<p class="os-result-loading">Consultando...</p>';
+  }
+
+  function wireWaFallback(phone, osNumber){
+    var btn = osResult.querySelector("[data-wa-fallback]");
+    if (!btn) return;
+    btn.addEventListener("click", function(){
+      waPendingMessage = "Quero consultar minha Ordem de Serviço.\nTelefone: " + phone + "\nNúmero da OS: " + osNumber;
+      openWaModal();
+    });
+  }
+
+  function renderOsError(message, phone, osNumber){
+    osResult.hidden = false;
+    osResult.innerHTML = '<p class="os-result-error">' + escapeHtml(message) +
+      ' Prefere falar direto com uma unidade? <button type="button" class="lnk" data-wa-fallback>Falar no WhatsApp</button></p>';
+    wireWaFallback(phone, osNumber);
+  }
+
+  function formatDate(value){
+    if (!value) return value;
+    var m = String(value).match(/^(\d{4})-(\d{2})-(\d{2})/);
+    return m ? (m[3] + "/" + m[2] + "/" + m[1]) : value;
+  }
+
+  function renderOsOrder(order){
+    var fields = [
+      ["Aparelho", order.modelo],
+      ["Visita agendada para", formatDate(order.visita_agendada)],
+      ["Última visita", formatDate(order.ultima_visita)],
+      ["Aberta em", formatDate(order.emissao)]
+    ].filter(function(f){ return f[1]; });
+
+    osResult.hidden = false;
+    osResult.innerHTML =
+      '<span class="os-status-badge">' + escapeHtml(order.status_desc || order.status || "Status indisponível") + '</span>' +
+      '<h3>OS ' + escapeHtml(order.order_no) + (order.unidade ? " — " + escapeHtml(order.unidade) : "") + '</h3>' +
+      '<div class="os-result-grid">' + fields.map(function(f){
+        return '<div class="os-result-field"><strong>' + f[0] + '</strong><span>' + escapeHtml(f[1]) + '</span></div>';
+      }).join("") + '</div>';
+  }
+
+  function renderOsMultiple(list){
+    osResult.hidden = false;
+    osResult.innerHTML = '<p>Encontramos mais de uma ordem com esse número. Selecione a sua unidade:</p><div class="os-match-list">' +
+      list.map(function(o, i){
+        return '<button type="button" class="os-match-item" data-idx="' + i + '"><strong>' + escapeHtml(o.unidade || "Unidade") +
+          '</strong><span>Aberta em ' + escapeHtml(o.emissao || "-") + '</span></button>';
+      }).join("") + '</div>';
+    osResult.querySelectorAll("[data-idx]").forEach(function(btn){
+      btn.addEventListener("click", function(){ renderOsOrder(list[Number(btn.getAttribute("data-idx"))]); });
+    });
+  }
+
+  if (osForm) {
+    osForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      var phone = document.getElementById("os-phone").value.trim();
+      var osNumber = document.getElementById("os-number").value.trim();
+      if (!phone || !osNumber) return;
+
+      if (!OS_API_BASE) {
+        waPendingMessage = "Quero consultar minha Ordem de Serviço.\nTelefone: " + phone + "\nNúmero da OS: " + osNumber;
+        openWaModal();
+        return;
+      }
+
+      renderOsLoading();
+      osSubmitBtn.disabled = true;
+      var url = OS_API_BASE + "/api/os-status?order_no=" + encodeURIComponent(osNumber) + "&phone=" + encodeURIComponent(phone);
+
+      fetch(url).then(function(res){
+        return res.json().catch(function(){ return {}; }).then(function(data){
+          return { ok: res.ok, status: res.status, data: data };
+        });
+      }).then(function(result){
+        osSubmitBtn.disabled = false;
+        if (!result.ok) {
+          var msg = (result.data && result.data.detail) || "Não conseguimos consultar sua OS agora.";
+          if (result.status === 429) msg = "Muitas tentativas. Aguarde alguns minutos e tente de novo.";
+          renderOsError(msg, phone, osNumber);
+          return;
+        }
+        if (result.data.multiplas_ordens) {
+          renderOsMultiple(result.data.multiplas_ordens);
+        } else {
+          renderOsOrder(result.data);
+        }
+      }).catch(function(){
+        osSubmitBtn.disabled = false;
+        renderOsError("Não conseguimos consultar sua OS agora.", phone, osNumber);
+      });
+    });
+  }
+
+  /* pausa o vídeo do hero se o usuário pede menos movimento */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var heroVideo = document.getElementById("hero-video");
+  if (reduceMotion.matches && heroVideo) { heroVideo.pause(); heroVideo.removeAttribute("autoplay"); }
+
+  /* ---------- carrossel de serviços (setas + bolinhas, com transição) ---------- */
+  var SERVICE_COUNT = 3;
+  var currentService = 0;
+  var serviceAnimating = false;
+  var counter = document.getElementById("slide-counter");
+  var TRANSITION_MS = 260;
+
+  function playVideoIn(slideEl){
+    var v = slideEl.querySelector("video");
+    if (v) { v.currentTime = 0; v.play().catch(function(){}); }
+  }
+  function pauseVideoIn(slideEl){
+    var v = slideEl.querySelector("video");
+    if (v) v.pause();
+  }
+
+  function goToService(next){
+    next = ((next % SERVICE_COUNT) + SERVICE_COUNT) % SERVICE_COUNT;
+    if (next === currentService || serviceAnimating) return;
+    serviceAnimating = true;
+
+    var oldEls = document.querySelectorAll('[data-slide="' + currentService + '"]');
+    var newEls = document.querySelectorAll('[data-slide="' + next + '"]');
+
+    oldEls.forEach(function(el){ el.classList.remove("show"); });
+
+    setTimeout(function(){
+      oldEls.forEach(function(el){
+        el.classList.remove("active");
+        if (el.classList.contains("services-video-slide")) pauseVideoIn(el);
+      });
+      newEls.forEach(function(el){ el.classList.add("active"); });
+      void document.body.offsetHeight; /* força reflow antes de animar a entrada */
+      requestAnimationFrame(function(){
+        newEls.forEach(function(el){
+          el.classList.add("show");
+          if (el.classList.contains("services-video-slide")) playVideoIn(el);
+        });
+      });
+      document.querySelectorAll('[data-dot]').forEach(function(el, idx){
+        el.classList.toggle("active", idx === next);
+      });
+      counter.innerHTML = (next + 1) + "<span>/3</span>";
+      currentService = next;
+      serviceAnimating = false;
+    }, TRANSITION_MS);
+  }
+
+  document.querySelectorAll(".carousel-arrow").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      goToService(currentService + Number(btn.getAttribute("data-dir")));
+    });
+  });
+  document.querySelectorAll("[data-dot]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      goToService(Number(btn.getAttribute("data-dot")));
+    });
+  });
+
+  /* ---------- buscador de unidades ---------- */
+  var UNITS = [
+    { badge:"samsung", name:"Shopping Morumbi", sub:"Centro de serviço · Loja 16, letra M-N-L", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511956872878", maps:"Shopping Morumbi Loja 16" },
+    { badge:"samsung", name:"Shopping Interlagos", sub:"Centro de serviço · Lojas 259 e 260", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511970521923", maps:"Shopping Interlagos Lojas 259 260" },
+    { badge:"multi", name:"JM3 · Cidade Dutra", sub:"Av. Prof. Papini, 343 — CEP 04805-300", region:"capital", category:"celular linha-branca ar", tags:"TVs · Lavadoras · Geladeiras · Ar-cond. · Soundbars · Micro-ondas", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5511924484338", maps:"Av. Professor Papini, 343, Cidade Dutra, São Paulo" },
+    { badge:"samsung", name:"Santos", sub:"Av. Senador Feijó, 426 — Vila Matias, CEP 11730-000", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Lavadoras · Geladeiras · Ar-cond.", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5513997988808", maps:"Av. Senador Feijó, 426, Vila Matias, Santos" },
+    { badge:"samsung", name:"Ribeirão Preto — Matriz", sub:"Av. Independência, 2636 — Alto da Boa Vista", region:"interior", category:"celular linha-branca ar", tags:"Centro de serviços completo · Toda linha Samsung", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"Balcão e atendimento em domicílio", wa:"551639111154", maps:"Av. Independência, 2636, Ribeirão Preto" },
+    { badge:"samsung", name:"Ribeirão Preto Shopping", sub:"Centro de serviço · Loja 125", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516982025127", maps:"Ribeirão Preto Shopping Center Loja 125" },
+    { badge:"samsung", name:"Novo Shopping Ribeirão", sub:"Centro de serviço · Loja 237/239", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516999913704", maps:"Novo Shopping Ribeirão Preto Loja 237" },
+    { badge:"samsung", name:"RioPreto Shopping", sub:"Centro de serviço · Bloco D, loja 068/069", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5517996559753", maps:"RioPreto Shopping Center Bloco D" },
+    { badge:"samsung", name:"São José dos Campos", sub:"Vale Sul Shopping · Sala 03", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5512996143245", maps:"Vale Sul Shopping Center Sala 03 São José dos Campos" },
+    { badge:"samsung", name:"Taboão da Serra", sub:"Rua Ernesto Capelari, 32 — Pq. Santos Dumont", region:"grande-sp", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sex 8h-18h", extra:"", wa:"5511930398440", maps:"Rua Ernesto Capelari, 32, Taboão da Serra" },
+    { badge:"samsung", name:"Taubaté Shopping", sub:"Av. Charles Schnneider, 1700 — Pq. Sr. do Bonfim", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5511994289332", maps:"Taubaté Shopping" },
+    { badge:"samsung", name:"Ferraz de Vasconcelos", sub:"Rua Santos Dumont, 543 — Vila Ana Maria", region:"grande-sp", category:"celular linha-branca", tags:"Celulares · Tablets · Acessórios · TVs", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"", wa:"5511995788632", maps:"Rua Santos Dumont, 543, Ferraz de Vasconcelos" }
+  ];
+
+  var grid = document.getElementById("units-grid");
+  var countEl = document.getElementById("result-count");
+  var emptyEl = document.getElementById("empty-state");
+  var clearEl = document.getElementById("result-clear");
+  var searchInput = document.getElementById("unit-search");
+  var state = { search:"", region:"all", category:"all" };
+
+  function unitCard(u){
+    var badgeLabel = u.badge === "samsung" ? "Autorizada Samsung" : "Multimarcas";
+    var badgeClass = u.badge === "samsung" ? "" : "multi";
+    var extraLine = u.extra ? '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2-10 10z"/></svg><span>' + u.extra + '</span></div>' : "";
+    return '' +
+      '<article class="unit-card">' +
+        '<div class="unit-photo"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px;"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>' +
+        '<div class="unit-body">' +
+          '<span class="unit-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
+          '<h3>' + u.name + '</h3>' +
+          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>' + u.sub + '</span></div>' +
+          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg><span>' + u.tags + '</span></div>' +
+          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>' + u.hours + '</span></div>' +
+          extraLine +
+        '</div>' +
+        '<div class="unit-actions">' +
+          '<a class="btn btn-primary" href="https://wa.me/' + u.wa + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">WhatsApp</a>' +
+          '<a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(u.maps) + '" target="_blank" rel="noopener">Mapa</a>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function normalize(str){
+    return str.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+
+  function render(){
+    var q = normalize(state.search.trim());
+    var results = UNITS.filter(function(u){
+      var matchesRegion = state.region === "all" || u.region === state.region;
+      var matchesCategory = state.category === "all" || u.category.indexOf(state.category) !== -1;
+      var haystack = normalize(u.name + " " + u.sub);
+      var matchesSearch = !q || haystack.indexOf(q) !== -1;
+      return matchesRegion && matchesCategory && matchesSearch;
+    });
+    grid.innerHTML = results.map(unitCard).join("");
+    countEl.innerHTML = "<strong>" + results.length + "</strong> unidade" + (results.length === 1 ? "" : "s") + " encontrada" + (results.length === 1 ? "" : "s");
+    emptyEl.classList.toggle("show", results.length === 0);
+    var hasFilters = state.search || state.region !== "all" || state.category !== "all";
+    clearEl.style.display = hasFilters ? "inline" : "none";
+  }
+
+  searchInput.addEventListener("input", function(e){ state.search = e.target.value; render(); });
+
+  function wireChipGroup(containerId, stateKey){
+    var container = document.getElementById(containerId);
+    container.querySelectorAll(".chip").forEach(function(chip){
+      chip.addEventListener("click", function(){
+        container.querySelectorAll(".chip").forEach(function(c){ c.setAttribute("aria-pressed","false"); });
+        chip.setAttribute("aria-pressed","true");
+        state[stateKey] = chip.getAttribute("data-value");
+        render();
+      });
+    });
+  }
+  wireChipGroup("filter-region", "region");
+  wireChipGroup("filter-category", "category");
+
+  clearEl.addEventListener("click", function(){
+    state = { search:"", region:"all", category:"all" };
+    searchInput.value = "";
+    document.querySelectorAll(".chip").forEach(function(c){ c.setAttribute("aria-pressed", c.getAttribute("data-value") === "all" ? "true":"false"); });
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
