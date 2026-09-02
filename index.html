@@ -245,8 +245,6 @@
   .social-row{display:flex; gap:10px;}
   .social-row a{width:36px; height:36px; border:1px solid rgba(255,255,255,0.2); border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0; color:#fff;}
 
-  .chat-float{position:fixed; bottom:24px; right:24px; z-index:50; width:58px; height:58px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 28px -10px rgba(11,37,69,0.45); transition:transform .15s ease; border:none;}
-  .chat-float:hover{transform:scale(1.06);}
 
   /* modal de escolha de unidade */
   .wa-modal-backdrop{position:fixed; inset:0; z-index:60; background:rgba(11,37,69,0.55); display:flex; align-items:center; justify-content:center; padding:24px;}
@@ -651,14 +649,22 @@
     </div>
   </footer>
 
-  <button class="chat-float" type="button" data-wa-picker aria-label="Falar com a gente">
-    <svg viewBox="0 0 24 24" style="width:26px;height:26px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;">
-      <path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H9.5L5 21v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/>
-      <circle cx="8" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-      <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-      <circle cx="16" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-    </svg>
-  </button>
+  <!-- Widget de chat do Chatwoot (bolha flutuante nativa) — atrás dele vai a IA com contexto da empresa/cliente -->
+  <script>
+    (function(d,t) {
+      var BASE_URL="https://acesso.allybot.com.br";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js";
+      g.async = true;
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({
+          websiteToken: 'wRyRh2SDwRjq7N1cUY7YNh4t',
+          baseUrl: BASE_URL
+        })
+      }
+    })(document,"script");
+  </script>
 
   <!-- modal: escolher unidade antes de abrir o WhatsApp -->
   <div class="wa-modal-backdrop" id="wa-modal-backdrop" hidden>
