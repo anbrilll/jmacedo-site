@@ -152,6 +152,7 @@
   .unit-body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .unit-badge{display:inline-flex; align-self:flex-start; font-size:0.66rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:var(--accent-soft); color:var(--navy-2);}
   .unit-badge.multi{background:#F3E3D3; color:#95491A;}
+  .unit-badge.plain{background:var(--bg-soft); color:var(--muted);}
   .unit-body h3{font-size:1rem;}
   .u-line{display:flex; gap:8px; align-items:flex-start; font-size:0.84rem; color:var(--muted);}
   .u-line .icon{width:15px; height:15px; margin-top:2px; color:var(--accent); flex-shrink:0;}
@@ -460,7 +461,7 @@
       <div class="finder-controls">
         <div class="search-row">
           <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="unit-search" placeholder="Busque por cidade, shopping ou bairro (ex: Ribeirão, Morumbi, Taboão)" aria-label="Buscar unidade" />
+          <input type="text" id="unit-search" placeholder="Busque por cidade ou bairro (ex: Ribeirão, Campinas, Taboão)" aria-label="Buscar unidade" />
         </div>
         <div class="filter-groups">
           <div class="filter-group">
@@ -919,19 +920,24 @@
   });
 
   /* ---------- buscador de unidades ---------- */
+  /* Lista reconciliada com os contatos reais de WhatsApp (telas enviadas em 01/09).
+     Unidades onde o telefone bate com o cadastro antigo mantêm endereço/horário reais.
+     Onde não houve correspondência, usamos só nome + telefone do print (sem inventar
+     endereço) e marcamos hasAddress:false — o card mostra "a confirmar" e esconde o
+     botão de Mapa em vez de arriscar um endereço errado. */
   var UNITS = [
-    { badge:"samsung", name:"Shopping Morumbi", sub:"Centro de serviço · Loja 16, letra M-N-L", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511956872878", maps:"Shopping Morumbi Loja 16" },
-    { badge:"samsung", name:"Shopping Interlagos", sub:"Centro de serviço · Lojas 259 e 260", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511970521923", maps:"Shopping Interlagos Lojas 259 260" },
-    { badge:"multi", name:"JM3 · Cidade Dutra", sub:"Av. Prof. Papini, 343 — CEP 04805-300", region:"capital", category:"celular linha-branca ar", tags:"TVs · Lavadoras · Geladeiras · Ar-cond. · Soundbars · Micro-ondas", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5511924484338", maps:"Av. Professor Papini, 343, Cidade Dutra, São Paulo" },
-    { badge:"samsung", name:"Santos", sub:"Av. Senador Feijó, 426 — Vila Matias, CEP 11730-000", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Lavadoras · Geladeiras · Ar-cond.", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5513997988808", maps:"Av. Senador Feijó, 426, Vila Matias, Santos" },
-    { badge:"samsung", name:"Ribeirão Preto — Matriz", sub:"Av. Independência, 2636 — Alto da Boa Vista", region:"interior", category:"celular linha-branca ar", tags:"Centro de serviços completo · Toda linha Samsung", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"Balcão e atendimento em domicílio", wa:"551639111154", maps:"Av. Independência, 2636, Ribeirão Preto" },
-    { badge:"samsung", name:"Ribeirão Preto Shopping", sub:"Centro de serviço · Loja 125", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516982025127", maps:"Ribeirão Preto Shopping Center Loja 125" },
-    { badge:"samsung", name:"Novo Shopping Ribeirão", sub:"Centro de serviço · Loja 237/239", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516999913704", maps:"Novo Shopping Ribeirão Preto Loja 237" },
-    { badge:"samsung", name:"RioPreto Shopping", sub:"Centro de serviço · Bloco D, loja 068/069", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5517996559753", maps:"RioPreto Shopping Center Bloco D" },
-    { badge:"samsung", name:"São José dos Campos", sub:"Vale Sul Shopping · Sala 03", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5512996143245", maps:"Vale Sul Shopping Center Sala 03 São José dos Campos" },
-    { badge:"samsung", name:"Taboão da Serra", sub:"Rua Ernesto Capelari, 32 — Pq. Santos Dumont", region:"grande-sp", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sex 8h-18h", extra:"", wa:"5511930398440", maps:"Rua Ernesto Capelari, 32, Taboão da Serra" },
-    { badge:"samsung", name:"Taubaté Shopping", sub:"Av. Charles Schnneider, 1700 — Pq. Sr. do Bonfim", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5511994289332", maps:"Taubaté Shopping" },
-    { badge:"samsung", name:"Ferraz de Vasconcelos", sub:"Rua Santos Dumont, 543 — Vila Ana Maria", region:"grande-sp", category:"celular linha-branca", tags:"Celulares · Tablets · Acessórios · TVs", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"", wa:"5511995788632", maps:"Rua Santos Dumont, 543, Ferraz de Vasconcelos" }
+    { badge:"multi", name:"JM3 · Cidade Dutra", hasAddress:true, sub:"Av. Prof. Papini, 343 — CEP 04805-300", region:"capital", category:"celular linha-branca ar", tags:"TVs · Lavadoras · Geladeiras · Ar-cond. · Soundbars · Micro-ondas", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5511924484338", maps:"Av. Professor Papini, 343, Cidade Dutra, São Paulo" },
+    { badge:"samsung", name:"Ribeirão Smart Center", hasAddress:true, sub:"Av. Independência, 2636 — Alto da Boa Vista", region:"interior", category:"celular linha-branca ar", tags:"Centro de serviços completo · Toda linha Samsung", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"Balcão e atendimento em domicílio", wa:"551639111154", maps:"Av. Independência, 2636, Ribeirão Preto" },
+    { badge:"samsung", name:"Rio Preto", hasAddress:true, sub:"Centro de serviço · Bloco D, loja 068/069", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5517996559753", maps:"RioPreto Shopping Center Bloco D" },
+    { badge:"samsung", name:"Taboão da Serra", hasAddress:true, sub:"Rua Ernesto Capelari, 32 — Pq. Santos Dumont", region:"grande-sp", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sex 8h-18h", extra:"", wa:"5511930398440", maps:"Rua Ernesto Capelari, 32, Taboão da Serra" },
+    { badge:"plain", name:"CSP São Miguel", hasAddress:false, region:"capital", category:"", wa:"5511930598313" },
+    { badge:"plain", name:"CSP São Miguel - Balcão", hasAddress:false, region:"capital", category:"", wa:"5511922216153" },
+    { badge:"plain", name:"Maxi Jundiaí", hasAddress:false, region:"interior", category:"", wa:"5511972277366" },
+    { badge:"plain", name:"Parque Dom Pedro", hasAddress:false, region:"interior", category:"", wa:"5519998713109" },
+    { badge:"plain", name:"Campinas", hasAddress:false, region:"interior", category:"", wa:"551920384948" },
+    { badge:"plain", name:"Santos", hasAddress:false, region:"litoral", category:"", wa:"5513997235278" },
+    { badge:"plain", name:"Ribeirão Shopping", hasAddress:false, region:"interior", category:"", wa:"5516997934104" },
+    { badge:"plain", name:"Ribeirão - IH", hasAddress:false, region:"interior", category:"", wa:"5516996117989" }
   ];
 
   var grid = document.getElementById("units-grid");
@@ -942,23 +948,27 @@
   var state = { search:"", region:"all", category:"all" };
 
   function unitCard(u){
-    var badgeLabel = u.badge === "samsung" ? "Autorizada Samsung" : "Multimarcas";
-    var badgeClass = u.badge === "samsung" ? "" : "multi";
+    var badgeLabel = u.badge === "samsung" ? "Autorizada Samsung" : u.badge === "multi" ? "Multimarcas" : "Unidade J Macedo";
+    var badgeClass = u.badge === "samsung" ? "" : u.badge === "multi" ? "multi" : "plain";
     var extraLine = u.extra ? '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l2-2 4 4 8-8 2 2-10 10z"/></svg><span>' + u.extra + '</span></div>' : "";
+    var subText = u.hasAddress ? u.sub : "Endereço a confirmar — fale no WhatsApp";
+    var tagsLine = u.tags ? '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg><span>' + u.tags + '</span></div>' : "";
+    var hoursText = u.hours || "Consulte o horário pelo WhatsApp";
+    var mapsBtn = u.hasAddress ? '<a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(u.maps) + '" target="_blank" rel="noopener">Mapa</a>' : "";
     return '' +
       '<article class="unit-card">' +
         '<div class="unit-photo"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px;"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>' +
         '<div class="unit-body">' +
           '<span class="unit-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
           '<h3>' + u.name + '</h3>' +
-          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>' + u.sub + '</span></div>' +
-          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg><span>' + u.tags + '</span></div>' +
-          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>' + u.hours + '</span></div>' +
+          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>' + subText + '</span></div>' +
+          tagsLine +
+          '<div class="u-line"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>' + hoursText + '</span></div>' +
           extraLine +
         '</div>' +
         '<div class="unit-actions">' +
           '<a class="btn btn-primary" href="https://wa.me/' + u.wa + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">WhatsApp</a>' +
-          '<a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(u.maps) + '" target="_blank" rel="noopener">Mapa</a>' +
+          mapsBtn +
         '</div>' +
       '</article>';
   }
@@ -971,8 +981,8 @@
     var q = normalize(state.search.trim());
     var results = UNITS.filter(function(u){
       var matchesRegion = state.region === "all" || u.region === state.region;
-      var matchesCategory = state.category === "all" || u.category.indexOf(state.category) !== -1;
-      var haystack = normalize(u.name + " " + u.sub);
+      var matchesCategory = state.category === "all" || (u.category || "").indexOf(state.category) !== -1;
+      var haystack = normalize(u.name + " " + (u.sub || ""));
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
       return matchesRegion && matchesCategory && matchesSearch;
     });
