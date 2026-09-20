@@ -45,7 +45,7 @@
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0;}
   .logo-img{height:36px; width:auto; display:block; flex-shrink:0;}
   .brand-text strong{font-family:var(--font-head); font-size:1rem; color:var(--navy); white-space:nowrap;}
-  .brand-text span{font-size:0.72rem; color:var(--muted); display:block; white-space:nowrap;}
+  .brand-text span{font-size:0.72rem; color:var(--muted); display:block; line-height:1.35;}
   nav.primary-nav{display:flex; align-items:center; gap:18px;}
   nav.primary-nav a{font-size:0.9rem; color:var(--muted); font-weight:500; white-space:nowrap;}
   nav.primary-nav a:hover{color:var(--navy);}
@@ -268,7 +268,7 @@
   <div class="container nav-row">
     <a class="brand" href="#topo">
       <img class="logo-img" src="assets/logo-jmacedo.png" alt="J. Macedo Eletrônica">
-      <div class="brand-text"><span>Assistência técnica autorizada Samsung</span></div>
+      <div class="brand-text"><span>Assistência técnica autorizada<br>Samsung</span></div>
     </a>
     <nav class="primary-nav" id="primary-nav">
       <a href="#sobre">Sobre</a>
@@ -430,19 +430,19 @@
           <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
           <h3>Produtos reparados J Macedo</h3>
           <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
-          <button class="lnk" type="button" data-wa-picker>Ver ofertas →</button>
+          <button class="lnk" type="button" data-wa-direct="5511924484338" data-wa-message="Olá! Vim pelo site e quero ver as ofertas de produtos reparados J Macedo.">Ver ofertas →</button>
         </div>
         <div class="card">
           <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
           <h3>Peças de reposição</h3>
           <p>Peças originais Samsung direto do fabricante, para assistências técnicas e profissionais.</p>
-          <button class="lnk" type="button" data-wa-picker>Falar com consultor →</button>
+          <button class="lnk" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Visitei o site e quero saber como adquirir peças originais Samsung.">Falar com consultor →</button>
         </div>
         <div class="card">
           <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2l1.5 4.5H12l-3.5 3L10 14 6 11l-4 3 1.5-4.5L0 6.5h4.5z"/></svg></div>
           <h3>Store+</h3>
           <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
-          <button class="lnk" type="button" data-wa-picker>Falar com consultor →</button>
+          <button class="lnk" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Vim do site e quero saber as ofertas do Store+.">Falar com consultor →</button>
         </div>
       </div>
     </div>
@@ -736,6 +736,13 @@
   }
   document.querySelectorAll("[data-wa-picker]").forEach(function(btn){
     btn.addEventListener("click", openWaModal);
+  });
+  /* botoes com numero e mensagem fixos (nao abrem o seletor de unidades) */
+  document.querySelectorAll("[data-wa-direct]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var msg = encodeURIComponent(btn.getAttribute("data-wa-message") || "Olá, vim pelo site da J Macedo");
+      window.open("https://wa.me/" + btn.getAttribute("data-wa-direct") + "?text=" + msg, "_blank", "noopener");
+    });
   });
   waClose.addEventListener("click", closeWaModal);
   waBackdrop.addEventListener("click", function(e){ if (e.target === waBackdrop) closeWaModal(); });
