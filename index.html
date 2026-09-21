@@ -955,13 +955,26 @@
   document.querySelectorAll(".carousel-arrow").forEach(function(btn){
     btn.addEventListener("click", function(){
       goToService(currentService + Number(btn.getAttribute("data-dir")));
+      restartServiceAutoplay();
     });
   });
   document.querySelectorAll("[data-dot]").forEach(function(btn){
     btn.addEventListener("click", function(){
       goToService(Number(btn.getAttribute("data-dot")));
+      restartServiceAutoplay();
     });
   });
+
+  /* troca automatica entre os 3 servicos, reiniciando o intervalo se o usuario interagir */
+  var SERVICE_AUTOPLAY_MS = 6000;
+  var serviceAutoplayTimer = null;
+  function restartServiceAutoplay(){
+    if (serviceAutoplayTimer) clearInterval(serviceAutoplayTimer);
+    serviceAutoplayTimer = setInterval(function(){
+      goToService(currentService + 1);
+    }, SERVICE_AUTOPLAY_MS);
+  }
+  restartServiceAutoplay();
 
   /* ---------- buscador de unidades ---------- */
   /* Lista reconciliada com os contatos reais de WhatsApp (telas enviadas em 01/09).
