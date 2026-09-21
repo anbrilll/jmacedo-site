@@ -91,7 +91,8 @@
 
   .promo-banners{display:flex; flex-direction:column; gap:16px;}
   .promo-banner{display:flex; align-items:center; gap:20px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:24px 28px; box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
-  .promo-banner .icon-wrap{width:52px; height:52px; margin-bottom:0;}
+  .promo-banner-photo{width:72px; height:72px; border-radius:16px; overflow:hidden; flex-shrink:0;}
+  .promo-banner-photo img{width:100%; height:100%; object-fit:cover; display:block;}
   .promo-banner-text{flex:1; min-width:0;}
   .promo-banner-text h3{font-size:1.05rem; margin-bottom:4px;}
   .promo-banner-text p{color:var(--muted); font-size:0.9rem;}
@@ -439,7 +440,7 @@
       </div>
       <div class="promo-banners">
         <div class="promo-banner">
-          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
+          <div class="promo-banner-photo"><img src="assets/jm3-fachada.jpg" alt="Fachada da unidade JM3 - J Macedo Eletrônica"></div>
           <div class="promo-banner-text">
             <h3>Produtos reparados J Macedo</h3>
             <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
@@ -447,7 +448,7 @@
           <button class="btn btn-primary" type="button" data-wa-direct="5511924484338" data-wa-message="Olá! Vim pelo site e quero ver as ofertas de produtos reparados J Macedo.">Ver ofertas →</button>
         </div>
         <div class="promo-banner">
-          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2l1.5 4.5H12l-3.5 3L10 14 6 11l-4 3 1.5-4.5L0 6.5h4.5z"/></svg></div>
+          <div class="promo-banner-photo"><img src="assets/storeplus-logo.png" alt="Store+"></div>
           <div class="promo-banner-text">
             <h3>Store+</h3>
             <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
