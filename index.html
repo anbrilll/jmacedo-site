@@ -83,13 +83,23 @@
 
   .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   @media (max-width:900px){.grid-3{grid-template-columns:1fr;}}
-  .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:760px;}
-  @media (max-width:640px){.grid-2{grid-template-columns:1fr;}}
   .card{background:#fff; border:1px solid var(--border); border-radius:20px; padding:28px; box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
-  .icon-wrap{width:44px; height:44px; border-radius:14px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; margin-bottom:18px;}
+  .icon-wrap{width:44px; height:44px; border-radius:14px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; margin-bottom:18px; flex-shrink:0;}
   .card h3{font-size:1.05rem; margin-bottom:8px;}
   .card p{color:var(--muted); font-size:0.9rem; margin-bottom:14px;}
   .lnk{font-size:0.86rem; font-weight:600; background:none; border:none; padding:0; color:var(--accent); cursor:pointer; font-family:inherit;}
+
+  .promo-banners{display:flex; flex-direction:column; gap:16px;}
+  .promo-banner{display:flex; align-items:center; gap:20px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:24px 28px; box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
+  .promo-banner .icon-wrap{width:52px; height:52px; margin-bottom:0;}
+  .promo-banner-text{flex:1; min-width:0;}
+  .promo-banner-text h3{font-size:1.05rem; margin-bottom:4px;}
+  .promo-banner-text p{color:var(--muted); font-size:0.9rem;}
+  .promo-banner .btn{flex-shrink:0; white-space:nowrap;}
+  @media (max-width:640px){
+    .promo-banner{flex-direction:column; align-items:flex-start; text-align:left;}
+    .promo-banner .btn{width:100%; justify-content:center;}
+  }
 
   /* services — carrossel com transição (troca por clique, não por scroll) */
   .services-frame{background:var(--navy); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; min-height:min(640px, 76vh); width:100%;}
@@ -427,18 +437,22 @@
         <h2>Peças e produtos</h2>
         <p>Para quem quer comprar já reparado e para quem também presta assistência técnica.</p>
       </div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
-          <h3>Produtos reparados J Macedo</h3>
-          <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
-          <button class="lnk" type="button" data-wa-direct="5511924484338" data-wa-message="Olá! Vim pelo site e quero ver as ofertas de produtos reparados J Macedo.">Ver ofertas →</button>
+      <div class="promo-banners">
+        <div class="promo-banner">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></div>
+          <div class="promo-banner-text">
+            <h3>Produtos reparados J Macedo</h3>
+            <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
+          </div>
+          <button class="btn btn-primary" type="button" data-wa-direct="5511924484338" data-wa-message="Olá! Vim pelo site e quero ver as ofertas de produtos reparados J Macedo.">Ver ofertas →</button>
         </div>
-        <div class="card">
-          <div class="product-photo"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2l1.5 4.5H12l-3.5 3L10 14 6 11l-4 3 1.5-4.5L0 6.5h4.5z"/></svg></div>
-          <h3>Store+</h3>
-          <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
-          <button class="lnk" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Vim do site e quero saber as ofertas do Store+.">Falar com consultor →</button>
+        <div class="promo-banner">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M6 2l1.5 4.5H12l-3.5 3L10 14 6 11l-4 3 1.5-4.5L0 6.5h4.5z"/></svg></div>
+          <div class="promo-banner-text">
+            <h3>Store+</h3>
+            <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
+          </div>
+          <button class="btn btn-primary" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Vim do site e quero saber as ofertas do Store+.">Falar com consultor →</button>
         </div>
       </div>
     </div>
