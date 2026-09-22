@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>J Macedo Eletrônica — Assistência técnica autorizada Samsung</title>
 <meta name="description" content="Assistência técnica autorizada Samsung e multimarcas em São Paulo desde 1977. Encontre a unidade J Macedo mais próxima de você." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
 
 <style>
   :root{
@@ -155,6 +156,10 @@
   .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
   .chip{font-size:0.82rem; padding:7px 14px; border-radius:100px; border:1px solid var(--border); background:#fff; color:var(--muted);}
   .chip[aria-pressed="true"]{background:var(--navy); border-color:var(--navy); color:#fff; font-weight:600;}
+  .units-map{position:relative; z-index:1; height:420px; border-radius:20px; overflow:hidden; margin-bottom:28px; border:1px solid var(--border); box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
+  .units-map .leaflet-popup-content{font-family:inherit; font-size:0.86rem;}
+  .units-map .leaflet-popup-content b{color:var(--navy); font-family:var(--font-head);}
+  .units-map .leaflet-popup-content a{color:var(--accent); font-weight:600; text-decoration:none;}
   .result-meta{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; font-size:0.85rem; color:var(--muted);}
   #result-count strong{color:var(--navy);}
   #result-clear{cursor:pointer; text-decoration:underline;}
@@ -315,7 +320,7 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">1977</div><div class="lbl">Fundação</div></div>
-        <div class="hero-stat"><div class="num">12</div><div class="lbl">Unidades em SP</div></div>
+        <div class="hero-stat"><div class="num">11</div><div class="lbl">Unidades em SP</div></div>
         <div class="hero-stat"><div class="num">Samsung</div><div class="lbl">Autorizada oficial</div></div>
         <div class="hero-stat"><div class="num">Seguradoras</div><div class="lbl">Atende sinistros</div></div>
       </div>
@@ -437,7 +442,7 @@
       </div>
       <div class="promo-banners">
         <div class="promo-banner">
-          <div class="promo-banner-photo"><img src="assets/jm3-fachada.jpg" alt="Fachada da unidade JM3 - J Macedo Eletrônica"></div>
+          <div class="promo-banner-photo"><img src="assets/jm3-fachada.jpg" alt="Fachada da unidade Cidade Dutra - J Macedo Eletrônica"></div>
           <div class="promo-banner-text">
             <h3>Produtos reparados J Macedo</h3>
             <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
@@ -456,14 +461,16 @@
     </div>
   </section>
 
-  <!-- UNIDADES — buscador real, 12 unidades -->
+  <!-- UNIDADES — buscador real + mapa, 11 unidades -->
   <section id="unidades">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">12 unidades em São Paulo</span>
+        <span class="eyebrow">11 unidades em São Paulo</span>
         <h2>Encontre a unidade certa</h2>
         <p>Capital, litoral e interior — em loja própria, dentro de shopping ou atendimento em domicílio.</p>
       </div>
+
+      <div id="units-map" class="units-map"></div>
 
       <div class="finder-controls">
         <div class="search-row">
@@ -494,7 +501,7 @@
       </div>
 
       <div class="result-meta">
-        <span id="result-count"><strong>12</strong> unidades encontradas</span>
+        <span id="result-count"><strong>11</strong> unidades encontradas</span>
         <span id="result-clear" style="display:none;">Limpar filtros</span>
       </div>
 
@@ -670,6 +677,7 @@
 
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 (function(){
   "use strict";
@@ -688,9 +696,8 @@
   /* ---------- modal "falar com qual unidade" ---------- */
   var WA_CONTACTS = [
     { name:"Matriz", wa:"5511997480887" },
-    { name:"JM3", wa:"5511924484338" },
-    { name:"CSP São Miguel", wa:"5511930598313" },
-    { name:"CSP São Miguel - Balcão", wa:"5511922216153" },
+    { name:"Cidade Dutra", wa:"5511924484338" },
+    { name:"São Miguel", wa:"5511930598313" },
     { name:"Maxi Jundiaí", wa:"5511972277366" },
     { name:"Parque Dom Pedro", wa:"5519998713109" },
     { name:"Campinas", wa:"551920384948" },
@@ -956,19 +963,43 @@
      endereço) e marcamos hasAddress:false — o card mostra "a confirmar" e esconde o
      botão de Mapa em vez de arriscar um endereço errado. */
   var UNITS = [
-    { badge:"multi", name:"JM3 · Cidade Dutra", hasAddress:true, sub:"Av. Prof. Papini, 343 — CEP 04805-300", region:"capital", category:"celular linha-branca ar", tags:"TVs · Lavadoras · Geladeiras · Ar-cond. · Soundbars · Micro-ondas", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio", wa:"5511924484338", maps:"Av. Professor Papini, 343, Cidade Dutra, São Paulo" },
-    { badge:"samsung", name:"Ribeirão Smart Center", hasAddress:true, sub:"Av. Independência, 2636 — Alto da Boa Vista", region:"interior", category:"celular linha-branca ar", tags:"Centro de serviços completo · Toda linha Samsung", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"Balcão e atendimento em domicílio", wa:"551639111154", maps:"Av. Independência, 2636, Ribeirão Preto" },
-    { badge:"samsung", name:"Rio Preto", hasAddress:true, sub:"Centro de serviço · Bloco D, loja 068/069", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5517996559753", maps:"RioPreto Shopping Center Bloco D" },
-    { badge:"samsung", name:"Taboão da Serra", hasAddress:true, sub:"Rua Ernesto Capelari, 32 — Pq. Santos Dumont", region:"grande-sp", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sex 8h-18h", extra:"", wa:"5511930398440", maps:"Rua Ernesto Capelari, 32, Taboão da Serra" },
-    { badge:"plain", name:"CSP São Miguel", hasAddress:false, region:"capital", category:"", wa:"5511930598313" },
-    { badge:"plain", name:"CSP São Miguel - Balcão", hasAddress:false, region:"capital", category:"", wa:"5511922216153" },
-    { badge:"plain", name:"Maxi Jundiaí", hasAddress:false, region:"interior", category:"", wa:"5511972277366" },
-    { badge:"plain", name:"Parque Dom Pedro", hasAddress:false, region:"interior", category:"", wa:"5519998713109" },
-    { badge:"plain", name:"Campinas", hasAddress:false, region:"interior", category:"", wa:"551920384948" },
-    { badge:"plain", name:"Santos", hasAddress:false, region:"litoral", category:"", wa:"5513997235278" },
+    { badge:"multi", name:"Cidade Dutra", hasAddress:true, sub:"Av. Prof. Papini, 343 — CEP 04805-300", region:"capital", category:"linha-branca ar", tags:"TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 8h-18h", extra:"Balcão e atendimento em domicílio · Multimarcas", wa:"5511924484338", maps:"Av. Professor Papini, 343, Cidade Dutra, São Paulo", lat:-23.7127584, lon:-46.7047468 },
+    { badge:"samsung", name:"Ribeirão Smart Center", hasAddress:true, sub:"Av. Independência, 2636 — Alto da Boa Vista — CEP 14025-230", region:"interior", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"Balcão e atendimento em domicílio", wa:"551639111154", maps:"Av. Independência, 2636, Ribeirão Preto", lat:-21.1981835, lon:-47.8156294 },
+    { badge:"samsung", name:"Rio Preto", hasAddress:true, sub:"Av. Anísio Haddad, 6363 — Bloco D, loja 068/069 — CEP 15090-305", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5517996559753", maps:"Av. Anisio Haddad, 6363, Bloco D loja 068/069, São José do Rio Preto", lat:-20.8466562, lon:-49.4033418 },
+    { badge:"samsung", name:"Taboão da Serra", hasAddress:true, sub:"Rua Ernesto Capelari, 32 — Pq. Santos Dumont — CEP 06754-060", region:"grande-sp", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sex 8h-18h", extra:"", wa:"5511930398440", maps:"Rua Ernesto Capelari, 32, Taboão da Serra", lat:-23.6079797, lon:-46.7560929 },
+    { badge:"samsung", name:"São Miguel", hasAddress:true, sub:"Av. São Miguel, 6913 — Vila Norma — CEP 08070-002", region:"capital", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5511930598313", maps:"Av. São Miguel, 6913, Vila Norma, São Paulo", lat:-23.5007485, lon:-46.4703145 },
+    { badge:"samsung", name:"Maxi Jundiaí", hasAddress:true, sub:"Av. Antônio Frederico Ozanan, 6000 — Loja E-1, Vl. Rio Branco — CEP 13215-900", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5511972277366", maps:"Av Antonio Frederico Ozanan, 6000, Jundiaí", lat:-23.1694619, lon:-46.8920941 },
+    { badge:"samsung", name:"Parque Dom Pedro", hasAddress:true, sub:"Shopping Parque Dom Pedro — Av. Guilherme Campos, 500, Loja 264/265 — CEP 13087-635", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5519998713109", maps:"Shopping Parque Dom Pedro, Campinas", lat:-22.8481878, lon:-47.0631037 },
+    { badge:"samsung", name:"Campinas", hasAddress:true, sub:"Av. Doutor Alberto Sarmento, 960", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"551920384948", maps:"Av Doutor Alberto Sarmento, 960, Campinas", lat:-22.9013145, lon:-47.0822282 },
+    { badge:"samsung", name:"Santos", hasAddress:true, sub:"Avenida Senador Feijó, 426 — Vila Matias — CEP 11015-504", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5513997235278", maps:"Avenida Senador Feijó, 426, Vila Matias, Santos", lat:-23.9435110, lon:-46.3263046 },
     { badge:"plain", name:"Ribeirão Shopping", hasAddress:false, region:"interior", category:"", wa:"5516997934104" },
     { badge:"plain", name:"Ribeirão - IH", hasAddress:false, region:"interior", category:"", wa:"5516996117989" }
   ];
+
+  /* mapa com pin de cada unidade que tem endereco confirmado (Leaflet + OpenStreetMap, sem chave de API) */
+  (function initUnitsMap(){
+    var mapEl = document.getElementById("units-map");
+    if (!mapEl || typeof L === "undefined") return;
+    var pontos = UNITS.filter(function(u){ return u.lat && u.lon; });
+    if (!pontos.length) return;
+    var map = L.map(mapEl, { scrollWheelZoom: false }).setView([-22.9, -47.3], 7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
+      maxZoom: 18,
+    }).addTo(map);
+    var markers = pontos.map(function(u){
+      var marker = L.marker([u.lat, u.lon]).addTo(map);
+      marker.bindPopup(
+        "<b>" + u.name + "</b><br>" + (u.sub || "") +
+        "<br><a href='https://wa.me/" + u.wa + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>Falar no WhatsApp</a>" +
+        " · <a href='https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(u.maps || u.name) + "' target='_blank' rel='noopener'>Rota</a>"
+      );
+      return marker;
+    });
+    if (markers.length > 1) {
+      map.fitBounds(L.featureGroup(markers).getBounds(), { padding: [30, 30] });
+    }
+  })();
 
   var grid = document.getElementById("units-grid");
   var countEl = document.getElementById("result-count");
