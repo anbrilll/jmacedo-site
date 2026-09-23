@@ -1041,7 +1041,10 @@
   function render(){
     var q = normalize(state.search.trim());
     var results = UNITS.filter(function(u){
-      var matchesRegion = state.region === "all" || u.region === state.region;
+      // "Grande SP" e' a regiao metropolitana e inclui a Capital; os demais filtros
+      // (Capital, Litoral, Interior) continuam mostrando so' a propria regiao.
+      var matchesRegion = state.region === "all" || u.region === state.region ||
+        (state.region === "grande-sp" && u.region === "capital");
       var matchesCategory = state.category === "all" || (u.category || "").indexOf(state.category) !== -1;
       var haystack = normalize(u.name + " " + (u.sub || ""));
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
