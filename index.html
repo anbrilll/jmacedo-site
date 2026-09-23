@@ -1064,7 +1064,9 @@
       // (Capital, Litoral, Interior) continuam mostrando so' a propria regiao.
       var matchesRegion = state.region === "all" || u.region === state.region ||
         (state.region === "grande-sp" && u.region === "capital");
-      var matchesCategory = state.category === "all" || (u.category || "").indexOf(state.category) !== -1;
+      // Compara palavra exata, nao substring - "celular" contem "ar" (cel-ul-AR) e
+      // batia por engano no filtro de Ar-condicionado antes dessa correcao.
+      var matchesCategory = state.category === "all" || (u.category || "").split(/\s+/).indexOf(state.category) !== -1;
       var haystack = normalize(u.name + " " + (u.sub || ""));
       var matchesSearch = !q || haystack.indexOf(q) !== -1;
       return matchesRegion && matchesCategory && matchesSearch;
