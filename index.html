@@ -320,7 +320,7 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">1977</div><div class="lbl">Fundação</div></div>
-        <div class="hero-stat"><div class="num">11</div><div class="lbl">Unidades em SP</div></div>
+        <div class="hero-stat"><div class="num">17</div><div class="lbl">Unidades em SP</div></div>
         <div class="hero-stat"><div class="num">Samsung</div><div class="lbl">Autorizada oficial</div></div>
         <div class="hero-stat"><div class="num">Seguradoras</div><div class="lbl">Atende sinistros</div></div>
       </div>
@@ -461,11 +461,11 @@
     </div>
   </section>
 
-  <!-- UNIDADES — buscador real + mapa, 11 unidades -->
+  <!-- UNIDADES — buscador real + mapa, 17 unidades -->
   <section id="unidades">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">11 unidades em São Paulo</span>
+        <span class="eyebrow">17 unidades em São Paulo</span>
         <h2>Encontre a unidade certa</h2>
         <p>Capital, litoral e interior — em loja própria, dentro de shopping ou atendimento em domicílio.</p>
       </div>
@@ -501,7 +501,7 @@
       </div>
 
       <div class="result-meta">
-        <span id="result-count"><strong>11</strong> unidades encontradas</span>
+        <span id="result-count"><strong>17</strong> unidades encontradas</span>
         <span id="result-clear" style="display:none;">Limpar filtros</span>
       </div>
 
@@ -703,10 +703,16 @@
     { name:"Campinas", wa:"551920384948" },
     { name:"Taboão da Serra", wa:"5511930398440" },
     { name:"Santos", wa:"5513997235278" },
-    { name:"Ribeirão Shopping", wa:"5516997934104" },
+    { name:"Ribeirão Shopping", wa:"5516982025127" },
+    { name:"Novo Shopping (Ribeirão Preto)", wa:"5516999913704" },
     { name:"Ribeirão Smart Center", wa:"551639111154" },
     { name:"Ribeirão - IH", wa:"5516996117989" },
-    { name:"Rio Preto", wa:"5517996559753" }
+    { name:"Rio Preto", wa:"5517996559753" },
+    { name:"Shopping Morumbi", wa:"5511956872878" },
+    { name:"Shopping Interlagos", wa:"5511970521923" },
+    { name:"Vale Sul Shopping", wa:"5512996143245" },
+    { name:"Taubaté Shopping", wa:"5511994289332" },
+    { name:"Ferraz de Vasconcelos", wa:"5511995788632" }
   ];
   var waBackdrop = document.getElementById("wa-modal-backdrop");
   var waList = document.getElementById("wa-modal-list");
@@ -971,8 +977,14 @@
     { badge:"samsung", name:"Maxi Jundiaí", hasAddress:true, sub:"Av. Antônio Frederico Ozanan, 6000 — Loja E-1, Vl. Rio Branco — CEP 13215-900", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5511972277366", maps:"Av Antonio Frederico Ozanan, 6000, Jundiaí", lat:-23.1694619, lon:-46.8920941 },
     { badge:"samsung", name:"Parque Dom Pedro", hasAddress:true, sub:"Shopping Parque Dom Pedro — Av. Guilherme Campos, 500, Loja 264/265 — CEP 13087-635", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5519998713109", maps:"Shopping Parque Dom Pedro, Campinas", lat:-22.8481878, lon:-47.0631037 },
     { badge:"samsung", name:"Campinas", hasAddress:true, sub:"Av. Doutor Alberto Sarmento, 960", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"551920384948", maps:"Av Doutor Alberto Sarmento, 960, Campinas", lat:-22.9013145, lon:-47.0822282 },
-    { badge:"samsung", name:"Santos", hasAddress:true, sub:"Avenida Senador Feijó, 426 — Vila Matias — CEP 11015-504", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5513997235278", maps:"Avenida Senador Feijó, 426, Vila Matias, Santos", lat:-23.9435110, lon:-46.3263046 },
-    { badge:"plain", name:"Ribeirão Shopping", hasAddress:false, region:"interior", category:"", wa:"5516997934104" },
+    { badge:"samsung", name:"Santos", hasAddress:true, sub:"Avenida Senador Feijó, 426 — Vila Matias — CEP 11015-504", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 8h-18h", extra:"", wa:"5513997235278", maps:"Avenida Senador Feijó, 426, Vila Matias, Santos", lat:-23.9435110, lon:-46.3263046 },
+    { badge:"samsung", name:"Shopping Morumbi", hasAddress:true, sub:"Av. Roque Petroni Júnior, 1089 — Loja 16 Letra M-N-L — CEP 04707-900", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511956872878", maps:"Shopping Morumbi, São Paulo", lat:-23.6234167, lon:-46.6985436 },
+    { badge:"samsung", name:"Shopping Interlagos", hasAddress:true, sub:"Av. Interlagos, 2255 — Loja 259 e 260 — CEP 04661-903", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511970521923", maps:"Shopping Interlagos, São Paulo", lat:-23.6762873, lon:-46.6768114 },
+    { badge:"samsung", name:"Ribeirão Shopping", hasAddress:true, sub:"Av. Cel. Fernando Ferreira Leite, 1540 — Loja 125, Jardim California — CEP 14026-900", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516982025127", maps:"Ribeirão Shopping, Ribeirão Preto", lat:-21.2123921, lon:-47.8167652 },
+    { badge:"samsung", name:"Novo Shopping (Ribeirão Preto)", hasAddress:true, sub:"Av. Pres. Kennedy, 1500 — Loja 237/239, Ribeirânia — CEP 14096-350", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516999913704", maps:"Novo Shopping, Ribeirão Preto", lat:-21.2062538, lon:-47.7650177 },
+    { badge:"samsung", name:"Vale Sul Shopping", hasAddress:true, sub:"Av. Andrômeda, 227 — Sala 03, Jardim Satélite — São José dos Campos", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5512996143245", maps:"Vale Sul Shopping, São José dos Campos", lat:-23.2172750, lon:-45.8913287 },
+    { badge:"samsung", name:"Taubaté Shopping", hasAddress:true, sub:"Av. Charles Schnneider, 1700 — Loja 93, Pq. Senhor do Bonfim — CEP 12040-000", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5511994289332", maps:"Taubaté Shopping, Taubaté", lat:-23.0230287, lon:-45.5820320 },
+    { badge:"samsung", name:"Ferraz de Vasconcelos", hasAddress:true, sub:"R. Santos Dumont, 543 — Vl. Ana Maria — CEP 08530-000", region:"grande-sp", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 9h-18h · Sáb 9h-13h", extra:"", wa:"5511995788632", maps:"Rua Santos Dumont, 543, Ferraz de Vasconcelos", lat:-23.5357153, lon:-46.3601136 },
     { badge:"plain", name:"Ribeirão - IH", hasAddress:false, region:"interior", category:"", wa:"5516996117989" }
   ];
 
