@@ -90,17 +90,18 @@
   .card p{color:var(--muted); font-size:0.9rem; margin-bottom:14px;}
   .lnk{font-size:0.86rem; font-weight:600; background:none; border:none; padding:0; color:var(--accent); cursor:pointer; font-family:inherit;}
 
-  .promo-banners{display:flex; flex-direction:column; gap:16px;}
-  .promo-banner{display:flex; align-items:center; gap:20px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:24px 28px; box-shadow:0 10px 30px -22px rgba(11,37,69,0.25);}
-  .promo-banner-photo{width:72px; height:72px; border-radius:16px; overflow:hidden; flex-shrink:0;}
-  .promo-banner-photo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .promo-banner-text{flex:1; min-width:0;}
-  .promo-banner-text h3{font-size:1.05rem; margin-bottom:4px;}
-  .promo-banner-text p{color:var(--muted); font-size:0.9rem;}
-  .promo-banner .btn{flex-shrink:0; white-space:nowrap;}
-  @media (max-width:640px){
-    .promo-banner{flex-direction:column; align-items:flex-start; text-align:left;}
-    .promo-banner .btn{width:100%; justify-content:center;}
+  /* compre direto da Samsung — painel escuro + video, mesmo visual do carrossel de servicos */
+  .direct-frame{background:var(--navy); border-radius:28px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; min-height:min(460px, 70vh);}
+  .direct-panel{padding:48px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+  .direct-panel h2{color:#fff; font-size:1.8rem; line-height:1.2; margin-bottom:14px;}
+  .direct-panel .sub{color:rgba(255,255,255,0.7); font-size:1rem; margin-bottom:28px;}
+  .direct-media{position:relative; overflow:hidden; min-height:260px;}
+  .direct-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+  .direct-overlay{position:absolute; inset:0; background:linear-gradient(200deg, rgba(11,37,69,0.15), rgba(8,20,40,0.45));}
+  @media (max-width:860px){
+    .direct-frame{grid-template-columns:1fr; min-height:auto;}
+    .direct-panel{padding:32px; order:2;}
+    .direct-media{order:1; min-height:220px;}
   }
 
   /* services — carrossel com transição (troca por clique, não por scroll) */
@@ -288,7 +289,7 @@
     <nav class="primary-nav" id="primary-nav">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
-      <a href="#produtos">Peças e produtos</a>
+      <a href="#produtos">Compre Samsung</a>
       <a href="#unidades">Unidades</a>
       <a href="#consultar-os">Consultar OS</a>
       <a href="#trabalhe">Trabalhe conosco</a>
@@ -432,30 +433,18 @@
     </div>
   </section>
 
-  <!-- PEÇAS E PRODUTOS -->
+  <!-- COMPRE DIRETO DA SAMSUNG -->
   <section id="produtos" class="products">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Loja &amp; peças</span>
-        <h2>Peças e produtos</h2>
-        <p>Para quem quer comprar já reparado e para quem também presta assistência técnica.</p>
-      </div>
-      <div class="promo-banners">
-        <div class="promo-banner">
-          <div class="promo-banner-photo"><img src="assets/jm3-fachada.jpg" alt="Fachada da unidade Cidade Dutra - J Macedo Eletrônica"></div>
-          <div class="promo-banner-text">
-            <h3>Produtos reparados J Macedo</h3>
-            <p>Aparelhos reparados com 3 meses de garantia J Macedo, com preços abaixo do novo.</p>
-          </div>
-          <button class="btn btn-primary" type="button" data-wa-direct="5511924484338" data-wa-message="Olá! Vim pelo site e quero ver as ofertas de produtos reparados J Macedo.">Ver ofertas →</button>
+      <div class="direct-frame">
+        <div class="direct-panel">
+          <h2>Compre direto do fabricante Samsung com condições exclusivas e receba direto em sua residência.</h2>
+          <p class="sub">Fale com um de nossos consultores.</p>
+          <button class="btn btn-primary direct-cta" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Vim do site e quero comprar direto do fabricante Samsung com as condições exclusivas.">Falar com um consultor →</button>
         </div>
-        <div class="promo-banner">
-          <div class="promo-banner-photo"><img src="assets/storeplus-logo.png" alt="Store+"></div>
-          <div class="promo-banner-text">
-            <h3>Store+</h3>
-            <p>Loja exclusiva de autorizada Samsung, com preços e cupons que não existem em outro lugar.</p>
-          </div>
-          <button class="btn btn-primary" type="button" data-wa-direct="5511910401528" data-wa-message="Olá! Vim do site e quero saber as ofertas do Store+.">Falar com consultor →</button>
+        <div class="direct-media">
+          <video id="direct-video" class="direct-video" autoplay muted loop playsinline><source src="assets/samsung-direto.mp4" type="video/mp4"></video>
+          <div class="direct-overlay"></div>
         </div>
       </div>
     </div>
@@ -889,6 +878,8 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var heroVideo = document.getElementById("hero-video");
   if (reduceMotion.matches && heroVideo) { heroVideo.pause(); heroVideo.removeAttribute("autoplay"); }
+  var directVideo = document.getElementById("direct-video");
+  if (reduceMotion.matches && directVideo) { directVideo.pause(); directVideo.removeAttribute("autoplay"); }
 
   /* ---------- carrossel de serviços (setas + bolinhas, com transição) ---------- */
   var SERVICE_COUNT = 3;
