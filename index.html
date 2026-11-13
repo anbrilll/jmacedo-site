@@ -179,7 +179,13 @@
   @media (max-width:980px){.units-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:660px){.units-grid{grid-template-columns:1fr;}}
   .unit-card{background:#fff; border:1px solid var(--border); border-radius:20px; overflow:hidden; display:flex; flex-direction:column;}
-  .unit-photo{height:110px; background:linear-gradient(135deg, var(--navy), var(--accent)); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.85);}
+  .unit-photo{height:150px; background:var(--bg-soft); display:flex; align-items:center; justify-content:center; color:var(--accent); overflow:hidden; position:relative;}
+  .unit-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  /* sem foto: arte abstrata discreta (linhas diagonais suaves) no lugar do bloco azul */
+  .unit-photo.is-art{background:
+    repeating-linear-gradient(135deg, rgba(47,111,237,0.07) 0 2px, transparent 2px 18px),
+    linear-gradient(135deg, var(--accent-soft), var(--bg-soft));}
+  .unit-photo.is-art .icon{opacity:0.55;}
   .unit-body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .unit-badge{display:inline-flex; align-self:flex-start; font-size:0.66rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:var(--accent-soft); color:var(--navy-2);}
   .unit-badge.multi{background:#F3E3D3; color:#95491A;}
@@ -238,8 +244,8 @@
   .photo-main{border-radius:24px; background:linear-gradient(150deg, var(--navy), var(--navy-2)); aspect-ratio:4/5; width:100%; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.3); overflow:hidden;}
   .photo-main .icon{width:56px; height:56px;}
   .photo-main img{width:100%; height:100%; object-fit:cover; display:block;}
-  .photo-overlap{position:absolute; left:-32px; bottom:0; width:60%; aspect-ratio:4/3; border-radius:20px; background:linear-gradient(150deg, var(--accent), var(--navy-2)); border:6px solid #fff; box-shadow:0 20px 40px -20px rgba(11,37,69,0.35); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.35);}
-  .photo-overlap .icon{width:36px; height:36px;}
+  .photo-overlap{position:absolute; left:-32px; bottom:0; width:60%; aspect-ratio:4/3; border-radius:20px; background:var(--bg-soft); border:6px solid #fff; box-shadow:0 20px 40px -20px rgba(11,37,69,0.35); overflow:hidden;}
+  .photo-overlap img{width:100%; height:100%; object-fit:cover; display:block;}
   .diff-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; padding-top:32px; border-top:1px solid var(--border);}
   @media (max-width:860px){.diff-strip{grid-template-columns:1fr 1fr;}}
   .diff-item{display:flex; gap:12px;}
@@ -552,7 +558,7 @@
         </div>
         <div class="about-photos">
           <div class="photo-main"><img src="assets/historia-oficina.jpg" alt="Técnico da J Macedo consertando uma TV antiga na oficina"></div>
-          <div class="photo-overlap"><svg class="icon" viewBox="0 0 24 24"><path d="M14 3l-7 9h6l-1 9 7-9h-6z"/></svg></div>
+          <div class="photo-overlap"><img src="assets/units/store-interior.jpg" alt="Interior de uma loja J Macedo com a parede de produtos Samsung SmartThings" loading="lazy"></div>
         </div>
       </div>
       <div class="diff-strip">
@@ -1012,6 +1018,27 @@
   var searchInput = document.getElementById("unit-search");
   var state = { search:"", region:"all", category:"all" };
 
+  /* fotos reais das lojas (do site antigo da J Macedo), por nome da unidade; quem nao tem foto usa a arte abstrata */
+  var UNIT_PHOTOS = {
+    "Cidade Dutra": "assets/units/cidade-dutra.jpg",
+    "Shopping Morumbi": "assets/units/shopping-morumbi.jpg",
+    "Shopping Interlagos": "assets/units/shopping-interlagos.jpg",
+    "Taboão da Serra": "assets/units/taboao-da-serra.jpg",
+    "Ferraz de Vasconcelos": "assets/units/ferraz-de-vasconcelos.jpg",
+    "Taubaté Shopping": "assets/units/taubate-shopping.jpg",
+    "Vale Sul Shopping": "assets/units/vale-sul-shopping.jpg",
+    "Rio Preto": "assets/units/rio-preto.jpg",
+    "Ribeirão Smart Center": "assets/units/ribeirao-smart-center.jpg"
+  };
+
+  function photoBlock(u){
+    var src = UNIT_PHOTOS[u.name];
+    if (src) {
+      return '<div class="unit-photo"><img src="' + src + '" alt="Fachada ou interior da unidade ' + u.name + '" loading="lazy" /></div>';
+    }
+    return '<div class="unit-photo is-art" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" style="width:34px;height:34px;"><path d="M3 10l2-5h14l2 5"/><path d="M4 10v9h16v-9"/><path d="M9 19v-5h6v5"/></svg></div>';
+  }
+
   function unitCard(u){
     var badgeLabel = u.badge === "samsung" ? "Autorizada Samsung" : u.badge === "multi" ? "Multimarcas" : "Unidade J Macedo";
     var badgeClass = u.badge === "samsung" ? "" : u.badge === "multi" ? "multi" : "plain";
@@ -1024,7 +1051,7 @@
     var wa2Btn = u.wa2 ? '<a class="btn btn-outline" href="https://wa.me/' + u.wa2 + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">' + (u.wa2Label || "WhatsApp") + '</a>' : "";
     return '' +
       '<article class="unit-card">' +
-        '<div class="unit-photo"><svg class="icon" viewBox="0 0 24 24" style="width:28px;height:28px;"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>' +
+        photoBlock(u) +
         '<div class="unit-body">' +
           '<span class="unit-badge ' + badgeClass + '">' + badgeLabel + '</span>' +
           '<h3>' + u.name + '</h3>' +
