@@ -633,22 +633,8 @@
     </div>
   </footer>
 
-  <!-- Widget de chat do Chatwoot (bolha flutuante nativa) — atrás dele vai a IA com contexto da empresa/cliente -->
-  <script>
-    (function(d,t) {
-      var BASE_URL="https://acesso.allybot.com.br";
-      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=BASE_URL+"/packs/js/sdk.js";
-      g.async = true;
-      s.parentNode.insertBefore(g,s);
-      g.onload=function(){
-        window.chatwootSDK.run({
-          websiteToken: 'wRyRh2SDwRjq7N1cUY7YNh4t',
-          baseUrl: BASE_URL
-        })
-      }
-    })(document,"script");
-  </script>
+  <!-- Widget de chat (Chatwoot) removido temporariamente: pendencia do link "Desenvolvido por" do widget.
+       Para religar, restaurar o script do SDK (baseUrl https://acesso.allybot.com.br) do historico do git. -->
 
   <!-- modal: escolher unidade antes de abrir o WhatsApp -->
   <div class="wa-modal-backdrop" id="wa-modal-backdrop" hidden>
