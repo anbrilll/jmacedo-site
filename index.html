@@ -308,7 +308,6 @@
       <a href="#servicos">Serviços</a>
       <a href="#produtos">Compre Samsung</a>
       <a href="#unidades">Unidades</a>
-      <a href="#consultar-os">Consultar OS</a>
       <a href="#trabalhe">Trabalhe conosco</a>
     </nav>
     <div style="display:flex; align-items:center; gap:12px;">
@@ -334,7 +333,6 @@
       <p class="lede">49 anos consertando celulares, TVs e eletrodomésticos de diversas marcas em São Paulo — atendimento em loja, shopping ou na sua casa.</p>
       <div class="hero-ctas">
         <button class="btn btn-primary" type="button" data-wa-picker>Falar no WhatsApp</button>
-        <a class="btn btn-outline on-dark" href="#consultar-os">Consultar minha OS</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">1977</div><div class="lbl">Fundação</div></div>
@@ -516,36 +514,6 @@
     </div>
   </section>
 
-  <!-- CONSULTAR OS -->
-  <section id="consultar-os">
-    <div class="container">
-      <div class="os-band">
-        <div>
-          <span class="eyebrow" style="color:#7FB0FF;">Já tem um reparo em andamento?</span>
-          <h2>Consulte sua Ordem de Serviço</h2>
-          <p>Informe o telefone usado no atendimento e o número da sua OS pra ver o status na hora.</p>
-          <form class="os-form" id="os-form">
-            <div class="os-field">
-              <label for="os-phone">Telefone</label>
-              <input type="tel" id="os-phone" placeholder="(11) 90000-0000" required>
-            </div>
-            <div class="os-field">
-              <label for="os-number">Número da OS</label>
-              <input type="text" id="os-number" placeholder="Ex: 12345" required>
-            </div>
-            <button class="btn btn-primary" type="submit" id="os-submit">Consultar</button>
-          </form>
-        </div>
-        <div class="os-steps">
-          <div class="os-step"><span class="n">1</span><p>Preencha telefone e número da OS</p></div>
-          <div class="os-step"><span class="n">2</span><p>A gente consulta na hora</p></div>
-          <div class="os-step"><span class="n">3</span><p>Veja o status e as peças do seu reparo</p></div>
-        </div>
-      </div>
-      <div class="os-result" id="os-result" hidden></div>
-    </div>
-  </section>
-
   <!-- SOBRE -->
   <section id="sobre">
     <div class="container">
@@ -591,14 +559,6 @@
           <h2 style="margin-top:8px;">Segue lá no Instagram</h2>
         </div>
         <a class="btn btn-outline" href="https://www.instagram.com/jmacedosamsung/" target="_blank" rel="noopener">Seguir</a>
-      </div>
-      <div class="insta-grid" id="insta-grid">
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
-        <div class="insta-tile"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
       </div>
     </div>
   </section>
@@ -748,134 +708,6 @@
     waPendingMessage = null;
     closeWaModal();
   });
-
-  /* ---------- consulta real de OS (status_api) ---------- */
-  /* Preencher com a URL do serviço depois do deploy, ex: "https://jmacedo-status-api.onrender.com".
-     Enquanto estiver vazio, o formulário cai automaticamente no fluxo antigo (WhatsApp). */
-  var OS_API_BASE = "https://jmacedo-status-api.onrender.com";
-
-  /* ---------- feed real do Instagram (troca os placeholders se a busca der certo) ---------- */
-  (function loadInstagramFeed(){
-    var grid = document.getElementById("insta-grid");
-    if (!grid) return;
-    fetch(OS_API_BASE + "/api/instagram-feed?limit=6")
-      .then(function(r){ if (!r.ok) throw new Error("feed indisponível"); return r.json(); })
-      .then(function(posts){
-        if (!Array.isArray(posts) || !posts.length) return;
-        grid.innerHTML = posts.map(function(p){
-          return '<a class="insta-tile" href="' + (p.permalink || "https://www.instagram.com/jmacedosamsung/") +
-            '" target="_blank" rel="noopener"><img src="' + p.image + '" alt="Post do Instagram J Macedo" loading="lazy"></a>';
-        }).join("");
-      })
-      .catch(function(){ /* mantem os placeholders - feed pode estar temporariamente indisponivel */ });
-  })();
-
-  var osForm = document.getElementById("os-form");
-  var osResult = document.getElementById("os-result");
-  var osSubmitBtn = document.getElementById("os-submit");
-
-  function escapeHtml(str){
-    return String(str == null ? "" : str).replace(/[&<>"']/g, function(c){
-      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
-    });
-  }
-
-  function renderOsLoading(){
-    osResult.hidden = false;
-    osResult.innerHTML = '<p class="os-result-loading">Consultando...</p>';
-  }
-
-  function wireWaFallback(phone, osNumber){
-    var btn = osResult.querySelector("[data-wa-fallback]");
-    if (!btn) return;
-    btn.addEventListener("click", function(){
-      waPendingMessage = "Quero consultar minha Ordem de Serviço.\nTelefone: " + phone + "\nNúmero da OS: " + osNumber;
-      openWaModal();
-    });
-  }
-
-  function renderOsError(message, phone, osNumber){
-    osResult.hidden = false;
-    osResult.innerHTML = '<p class="os-result-error">' + escapeHtml(message) +
-      ' Prefere falar direto com uma unidade? <button type="button" class="lnk" data-wa-fallback>Falar no WhatsApp</button></p>';
-    wireWaFallback(phone, osNumber);
-  }
-
-  function formatDate(value){
-    if (!value) return value;
-    var m = String(value).match(/^(\d{4})-(\d{2})-(\d{2})/);
-    return m ? (m[3] + "/" + m[2] + "/" + m[1]) : value;
-  }
-
-  function renderOsOrder(order){
-    var fields = [
-      ["Aparelho", order.modelo],
-      ["Visita agendada para", formatDate(order.visita_agendada)],
-      ["Última visita", formatDate(order.ultima_visita)],
-      ["Aberta em", formatDate(order.emissao)]
-    ].filter(function(f){ return f[1]; });
-
-    osResult.hidden = false;
-    osResult.innerHTML =
-      '<span class="os-status-badge">' + escapeHtml(order.status_desc || order.status || "Status indisponível") + '</span>' +
-      '<h3>OS ' + escapeHtml(order.order_no) + (order.unidade ? " — " + escapeHtml(order.unidade) : "") + '</h3>' +
-      '<div class="os-result-grid">' + fields.map(function(f){
-        return '<div class="os-result-field"><strong>' + f[0] + '</strong><span>' + escapeHtml(f[1]) + '</span></div>';
-      }).join("") + '</div>';
-  }
-
-  function renderOsMultiple(list){
-    osResult.hidden = false;
-    osResult.innerHTML = '<p>Encontramos mais de uma ordem com esse número. Selecione a sua unidade:</p><div class="os-match-list">' +
-      list.map(function(o, i){
-        return '<button type="button" class="os-match-item" data-idx="' + i + '"><strong>' + escapeHtml(o.unidade || "Unidade") +
-          '</strong><span>Aberta em ' + escapeHtml(o.emissao || "-") + '</span></button>';
-      }).join("") + '</div>';
-    osResult.querySelectorAll("[data-idx]").forEach(function(btn){
-      btn.addEventListener("click", function(){ renderOsOrder(list[Number(btn.getAttribute("data-idx"))]); });
-    });
-  }
-
-  if (osForm) {
-    osForm.addEventListener("submit", function(e){
-      e.preventDefault();
-      var phone = document.getElementById("os-phone").value.trim();
-      var osNumber = document.getElementById("os-number").value.trim();
-      if (!phone || !osNumber) return;
-
-      if (!OS_API_BASE) {
-        waPendingMessage = "Quero consultar minha Ordem de Serviço.\nTelefone: " + phone + "\nNúmero da OS: " + osNumber;
-        openWaModal();
-        return;
-      }
-
-      renderOsLoading();
-      osSubmitBtn.disabled = true;
-      var url = OS_API_BASE + "/api/os-status?order_no=" + encodeURIComponent(osNumber) + "&phone=" + encodeURIComponent(phone);
-
-      fetch(url).then(function(res){
-        return res.json().catch(function(){ return {}; }).then(function(data){
-          return { ok: res.ok, status: res.status, data: data };
-        });
-      }).then(function(result){
-        osSubmitBtn.disabled = false;
-        if (!result.ok) {
-          var msg = (result.data && result.data.detail) || "Não conseguimos consultar sua OS agora.";
-          if (result.status === 429) msg = "Muitas tentativas. Aguarde alguns minutos e tente de novo.";
-          renderOsError(msg, phone, osNumber);
-          return;
-        }
-        if (result.data.multiplas_ordens) {
-          renderOsMultiple(result.data.multiplas_ordens);
-        } else {
-          renderOsOrder(result.data);
-        }
-      }).catch(function(){
-        osSubmitBtn.disabled = false;
-        renderOsError("Não conseguimos consultar sua OS agora.", phone, osNumber);
-      });
-    });
-  }
 
   /* pausa o vídeo do hero se o usuário pede menos movimento */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
