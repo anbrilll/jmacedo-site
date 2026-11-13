@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anbrilll.github.io/jmacedo-site/sitemap.xml
+Sitemap: https://www.jmacedoeletronica.com.br/sitemap.xml
