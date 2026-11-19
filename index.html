@@ -805,7 +805,7 @@
     { badge:"samsung", name:"Parque Dom Pedro", hasAddress:true, sub:"Shopping Parque Dom Pedro — Av. Guilherme Campos, 500, Loja 264/265 — CEP 13087-635", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5519998713109", maps:"Shopping Parque Dom Pedro, Campinas", lat:-22.8481878, lon:-47.0631037 },
     { badge:"samsung", name:"Campinas", hasAddress:true, sub:"Av. Doutor Alberto Sarmento, 960", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"551920384948", maps:"Av Doutor Alberto Sarmento, 960, Campinas", lat:-22.9013145, lon:-47.0822282 },
     { badge:"samsung", name:"Santos", hasAddress:true, sub:"Avenida Senador Feijó, 426 — Vila Matias — CEP 11015-504", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 8h-18h", extra:"", wa:"5513997235278", maps:"Avenida Senador Feijó, 426, Vila Matias, Santos", lat:-23.9435110, lon:-46.3263046 },
-    { badge:"samsung", name:"Fortaleza", hasAddress:true, sub:"Av. Rui Barbosa, 2727 — Loja 02, Joaquim Távora — CEP 60115-222 — Fortaleza/CE", region:"nordeste", category:"", tags:"Centro de serviço Samsung", hours:"Consulte o horário com a Central", extra:"", wa:"", maps:"Av Rui Barbosa, 2727, Joaquim Távora, Fortaleza", lat:-3.7465168, lon:-38.5124120 },
+    { badge:"samsung", name:"Fortaleza", hasAddress:true, sub:"Av. Rui Barbosa, 2727 — Loja 02, Joaquim Távora — CEP 60115-222 — Fortaleza/CE", region:"nordeste", category:"", tags:"Centro de serviço Samsung", hours:"Consulte o horário por telefone", extra:"", wa:"", phone:"558537710098", phoneLabel:"Ligar (85) 3771-0098", maps:"Av Rui Barbosa, 2727, Joaquim Távora, Fortaleza", lat:-3.7465168, lon:-38.5124120 },
     { badge:"samsung", name:"Shopping Morumbi", hasAddress:true, sub:"Av. Roque Petroni Júnior, 1089 — Loja 16 Letra M-N-L — CEP 04707-900", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511956872878", maps:"Shopping Morumbi, São Paulo", lat:-23.6234167, lon:-46.6985436 },
     { badge:"samsung", name:"Shopping Interlagos", hasAddress:true, sub:"Av. Interlagos, 2255 — Loja 259 e 260 — CEP 04661-903", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511970521923", maps:"Shopping Interlagos, São Paulo", lat:-23.6762873, lon:-46.6768114 },
     { badge:"samsung", name:"Ribeirão Shopping", hasAddress:true, sub:"Av. Cel. Fernando Ferreira Leite, 1540 — Loja 125, Jardim California — CEP 14026-900", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516997934104", maps:"Ribeirão Shopping, Ribeirão Preto", lat:-21.2123921, lon:-47.8167652 },
@@ -831,7 +831,7 @@
       var marker = L.marker([u.lat, u.lon]).addTo(map);
       var waLinks = u.wa
         ? "<a href='https://wa.me/" + u.wa + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>" + (u.waLabel || "Falar no WhatsApp") + "</a>"
-        : "<a href='tel:+551156660466'>Ligar para a Central</a>";
+        : "<a href='tel:+" + (u.phone || "551156660466") + "'>" + (u.phoneLabel || "Ligar para a Central") + "</a>";
       if (u.wa2) {
         waLinks += " · <a href='https://wa.me/" + u.wa2 + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>" + (u.wa2Label || "WhatsApp") + "</a>";
       }
@@ -907,7 +907,7 @@
         '<div class="unit-actions">' +
           (u.wa
             ? '<a class="btn btn-primary" href="https://wa.me/' + u.wa + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">' + waLabel + '</a>'
-            : '<a class="btn btn-primary" href="tel:+551156660466">Ligar para a Central</a>') +
+            : '<a class="btn btn-primary" href="tel:+' + (u.phone || "551156660466") + '">' + (u.phoneLabel || "Ligar para a Central") + '</a>') +
           wa2Btn +
           mapsBtn +
         '</div>' +
