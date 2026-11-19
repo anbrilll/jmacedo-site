@@ -330,13 +330,13 @@
     <div class="container hero-inner">
       <span class="pill on-dark">Autorizada Samsung · Multimarcas · Seguradoras</span>
       <h1>A gente vai <span>até você.</span></h1>
-      <p class="lede">49 anos consertando celulares, TVs e eletrodomésticos de diversas marcas em São Paulo — atendimento em loja, shopping ou na sua casa.</p>
+      <p class="lede">49 anos consertando celulares, TVs e eletrodomésticos de diversas marcas em São Paulo e Fortaleza — atendimento em loja, shopping ou na sua casa.</p>
       <div class="hero-ctas">
         <button class="btn btn-primary" type="button" data-wa-picker>Falar no WhatsApp</button>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">1977</div><div class="lbl">Fundação</div></div>
-        <div class="hero-stat"><div class="num">17</div><div class="lbl">Unidades em SP</div></div>
+        <div class="hero-stat"><div class="num">18</div><div class="lbl">Unidades</div></div>
         <div class="hero-stat"><div class="num">Samsung</div><div class="lbl">Autorizada oficial</div></div>
         <div class="hero-stat"><div class="num">Seguradoras</div><div class="lbl">Atende sinistros</div></div>
       </div>
@@ -469,7 +469,7 @@
   <section id="unidades">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">17 unidades em São Paulo</span>
+        <span class="eyebrow">18 unidades em São Paulo e Fortaleza</span>
         <h2>Encontre a unidade certa</h2>
         <p>Capital, litoral e interior — em loja própria, dentro de shopping ou atendimento em domicílio.</p>
       </div>
@@ -490,6 +490,7 @@
               <button class="chip" aria-pressed="false" data-value="grande-sp">Grande SP</button>
               <button class="chip" aria-pressed="false" data-value="litoral">Litoral</button>
               <button class="chip" aria-pressed="false" data-value="interior">Interior</button>
+              <button class="chip" aria-pressed="false" data-value="nordeste">Nordeste</button>
             </div>
           </div>
           <div class="filter-group">
@@ -569,9 +570,9 @@
       <div class="work-band">
         <div>
           <h3>Quer fazer parte da equipe?</h3>
-          <p>Estamos sempre em busca de técnicos e atendentes para nossas unidades em São Paulo.</p>
+          <p>Estamos sempre em busca de técnicos e atendentes para as nossas unidades.</p>
         </div>
-        <a class="btn btn-primary" href="https://jmacedo-carreiras.pages.dev/vagas/j-macedo" target="_blank" rel="noopener">Ver vagas e enviar currículo</a>
+        <a class="btn btn-primary" href="https://carreirasjmacedoeletronica.pages.dev" target="_blank" rel="noopener">Ver vagas e enviar currículo</a>
       </div>
     </div>
   </section>
@@ -804,6 +805,7 @@
     { badge:"samsung", name:"Parque Dom Pedro", hasAddress:true, sub:"Shopping Parque Dom Pedro — Av. Guilherme Campos, 500, Loja 264/265 — CEP 13087-635", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"5519998713109", maps:"Shopping Parque Dom Pedro, Campinas", lat:-22.8481878, lon:-47.0631037 },
     { badge:"samsung", name:"Campinas", hasAddress:true, sub:"Av. Doutor Alberto Sarmento, 960", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Consulte o horário pelo WhatsApp", extra:"", wa:"551920384948", maps:"Av Doutor Alberto Sarmento, 960, Campinas", lat:-22.9013145, lon:-47.0822282 },
     { badge:"samsung", name:"Santos", hasAddress:true, sub:"Avenida Senador Feijó, 426 — Vila Matias — CEP 11015-504", region:"litoral", category:"celular linha-branca ar", tags:"Celulares · TVs · Linha branca · Ar-condicionado", hours:"Seg-sex 8h-18h", extra:"", wa:"5513997235278", maps:"Avenida Senador Feijó, 426, Vila Matias, Santos", lat:-23.9435110, lon:-46.3263046 },
+    { badge:"samsung", name:"Fortaleza", hasAddress:true, sub:"Av. Rui Barbosa, 2727 — Loja 02, Joaquim Távora — CEP 60115-222 — Fortaleza/CE", region:"nordeste", category:"", tags:"Centro de serviço Samsung", hours:"Consulte o horário com a Central", extra:"", wa:"", maps:"Av Rui Barbosa, 2727, Joaquim Távora, Fortaleza", lat:-3.7465168, lon:-38.5124120 },
     { badge:"samsung", name:"Shopping Morumbi", hasAddress:true, sub:"Av. Roque Petroni Júnior, 1089 — Loja 16 Letra M-N-L — CEP 04707-900", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511956872878", maps:"Shopping Morumbi, São Paulo", lat:-23.6234167, lon:-46.6985436 },
     { badge:"samsung", name:"Shopping Interlagos", hasAddress:true, sub:"Av. Interlagos, 2255 — Loja 259 e 260 — CEP 04661-903", region:"capital", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 10h15-21h48 · Dom 14h-20h", extra:"", wa:"5511970521923", maps:"Shopping Interlagos, São Paulo", lat:-23.6762873, lon:-46.6768114 },
     { badge:"samsung", name:"Ribeirão Shopping", hasAddress:true, sub:"Av. Cel. Fernando Ferreira Leite, 1540 — Loja 125, Jardim California — CEP 14026-900", region:"interior", category:"celular", tags:"Celulares · Tablets · Acessórios", hours:"Seg-sáb 13h-21h", extra:"", wa:"5516997934104", maps:"Ribeirão Shopping, Ribeirão Preto", lat:-21.2123921, lon:-47.8167652 },
@@ -827,7 +829,9 @@
     }).addTo(map);
     var markers = pontos.map(function(u){
       var marker = L.marker([u.lat, u.lon]).addTo(map);
-      var waLinks = "<a href='https://wa.me/" + u.wa + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>" + (u.waLabel || "Falar no WhatsApp") + "</a>";
+      var waLinks = u.wa
+        ? "<a href='https://wa.me/" + u.wa + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>" + (u.waLabel || "Falar no WhatsApp") + "</a>"
+        : "<a href='tel:+551156660466'>Ligar para a Central</a>";
       if (u.wa2) {
         waLinks += " · <a href='https://wa.me/" + u.wa2 + "?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo' target='_blank' rel='noopener'>" + (u.wa2Label || "WhatsApp") + "</a>";
       }
@@ -838,8 +842,9 @@
       );
       return marker;
     });
-    if (markers.length > 1) {
-      map.fitBounds(L.featureGroup(markers).getBounds(), { padding: [30, 30] });
+    var spMarkers = markers.filter(function(m, i){ return pontos[i].region !== "nordeste"; });
+    if (spMarkers.length > 1) {
+      map.fitBounds(L.featureGroup(spMarkers).getBounds(), { padding: [30, 30] });
     }
   })();
 
@@ -862,7 +867,12 @@
     "Rio Preto": "assets/units/rio-preto.jpg",
     "Ribeirão Smart Center": "assets/units/ribeirao-smart-center.jpg",
     "Ribeirão Shopping": "assets/units/ribeirao-shopping.jpg",
-    "Novo Shopping (Ribeirão Preto)": "assets/units/novo-shopping.jpg"
+    "Novo Shopping (Ribeirão Preto)": "assets/units/novo-shopping.jpg",
+    "São Miguel": "assets/units/sao-miguel.jpg",
+    "Maxi Jundiaí": "assets/units/maxi-jundiai.jpg",
+    "Campinas": "assets/units/campinas.jpg",
+    "Santos": "assets/units/store-interior.jpg",
+    "Fortaleza": "assets/units/fortaleza.jpg"
   };
 
   function photoBlock(u){
@@ -895,7 +905,9 @@
           extraLine +
         '</div>' +
         '<div class="unit-actions">' +
-          '<a class="btn btn-primary" href="https://wa.me/' + u.wa + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">' + waLabel + '</a>' +
+          (u.wa
+            ? '<a class="btn btn-primary" href="https://wa.me/' + u.wa + '?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20J%20Macedo" target="_blank" rel="noopener">' + waLabel + '</a>'
+            : '<a class="btn btn-primary" href="tel:+551156660466">Ligar para a Central</a>') +
           wa2Btn +
           mapsBtn +
         '</div>' +
